@@ -1,0 +1,28 @@
+PODS:
+  - iCarousel (1.8.3)
+  - OCMock (3.4.3)
+  - ReactiveObjC (3.1.0)
+  - Toast (4.0.0)
+
+DEPENDENCIES:
+  - iCarousel (~> 1.8)
+  - OCMock (~> 3.4)
+  - ReactiveObjC
+  - Toast (~> 4.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - iCarousel
+    - OCMock
+    - ReactiveObjC
+    - Toast
+
+SPEC CHECKSUMS:
+  iCarousel: d782f635afac190c49bb8ee455882284cff8b85f
+  OCMock: 43565190abc78977ad44a61c0d20d7f0784d35ab
+  ReactiveObjC: 2a38ea15335de4119d8b17caf1db1484f61db902
+  Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
+
+PODFILE CHECKSUM: 682246cddcad38bebc1661b2a18c22de2128c9fb
+
+COCOAPODS: 1.5.3
