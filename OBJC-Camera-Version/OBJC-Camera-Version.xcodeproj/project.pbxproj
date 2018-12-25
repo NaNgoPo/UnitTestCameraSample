@@ -11,7 +11,6 @@
 		1BDD2AC24FF55A016EBAD64F /* libPods-OBJC-Camera-VersionTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CB6DD6463E5AD06FA7008F1 /* libPods-OBJC-Camera-VersionTests.a */; };
 		3BE2E052EB3663277D11786B /* libPods-OBJC-Camera-Version.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FDDC9A3017A2AA57BD074098 /* libPods-OBJC-Camera-Version.a */; };
 		9749AAB921D07B18000CD9B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9749AAB821D07B18000CD9B1 /* AppDelegate.m */; };
-		9749AABC21D07B18000CD9B1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9749AABB21D07B18000CD9B1 /* ViewController.m */; };
 		9749AABF21D07B18000CD9B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9749AABD21D07B18000CD9B1 /* Main.storyboard */; };
 		9749AAC121D07B19000CD9B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9749AAC021D07B19000CD9B1 /* Assets.xcassets */; };
 		9749AAC421D07B19000CD9B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9749AAC221D07B19000CD9B1 /* LaunchScreen.storyboard */; };
@@ -25,6 +24,10 @@
 		9749AAFF21D083A1000CD9B1 /* CameraControllerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9749AAFE21D083A1000CD9B1 /* CameraControllerManager.m */; };
 		97F327A121D0BB660064C148 /* ButtonCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F3279F21D0BB660064C148 /* ButtonCameraController.m */; };
 		97F327A221D0BB660064C148 /* ButtonCameraController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97F327A021D0BB660064C148 /* ButtonCameraController.xib */; };
+		97F327B521D1E3280064C148 /* SwipeToChoose.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F327B321D1E3280064C148 /* SwipeToChoose.m */; };
+		97F327B621D1E3280064C148 /* SwipeToChoose.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97F327B421D1E3280064C148 /* SwipeToChoose.xib */; };
+		97F327BB21D1E36A0064C148 /* SwipeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F327B921D1E36A0064C148 /* SwipeCell.m */; };
+		97F327BC21D1E36A0064C148 /* SwipeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97F327BA21D1E36A0064C148 /* SwipeCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,8 +57,6 @@
 		9749AAB421D07B18000CD9B1 /* OBJC-Camera-Version.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OBJC-Camera-Version.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9749AAB721D07B18000CD9B1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9749AAB821D07B18000CD9B1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		9749AABA21D07B18000CD9B1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		9749AABB21D07B18000CD9B1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		9749AABE21D07B18000CD9B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9749AAC021D07B19000CD9B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9749AAC321D07B19000CD9B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -79,6 +80,12 @@
 		97F3279E21D0BB660064C148 /* ButtonCameraController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ButtonCameraController.h; sourceTree = "<group>"; };
 		97F3279F21D0BB660064C148 /* ButtonCameraController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ButtonCameraController.m; sourceTree = "<group>"; };
 		97F327A021D0BB660064C148 /* ButtonCameraController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonCameraController.xib; sourceTree = "<group>"; };
+		97F327B221D1E3280064C148 /* SwipeToChoose.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwipeToChoose.h; sourceTree = "<group>"; };
+		97F327B321D1E3280064C148 /* SwipeToChoose.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SwipeToChoose.m; sourceTree = "<group>"; };
+		97F327B421D1E3280064C148 /* SwipeToChoose.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwipeToChoose.xib; sourceTree = "<group>"; };
+		97F327B821D1E36A0064C148 /* SwipeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwipeCell.h; sourceTree = "<group>"; };
+		97F327B921D1E36A0064C148 /* SwipeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SwipeCell.m; sourceTree = "<group>"; };
+		97F327BA21D1E36A0064C148 /* SwipeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwipeCell.xib; sourceTree = "<group>"; };
 		BC04E0A648BED3D12BEB1967 /* Pods-OBJC-Camera-VersionUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OBJC-Camera-VersionUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OBJC-Camera-VersionUITests/Pods-OBJC-Camera-VersionUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F0E680E7F28D8462030E1F71 /* Pods-OBJC-Camera-Version.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OBJC-Camera-Version.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OBJC-Camera-Version/Pods-OBJC-Camera-Version.debug.xcconfig"; sourceTree = "<group>"; };
 		FDDC9A3017A2AA57BD074098 /* libPods-OBJC-Camera-Version.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OBJC-Camera-Version.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,8 +162,6 @@
 				9749AAE921D07CFC000CD9B1 /* UserInterface */,
 				9749AAB721D07B18000CD9B1 /* AppDelegate.h */,
 				9749AAB821D07B18000CD9B1 /* AppDelegate.m */,
-				9749AABA21D07B18000CD9B1 /* ViewController.h */,
-				9749AABB21D07B18000CD9B1 /* ViewController.m */,
 				9749AABD21D07B18000CD9B1 /* Main.storyboard */,
 				9749AAC021D07B19000CD9B1 /* Assets.xcassets */,
 				9749AAC221D07B19000CD9B1 /* LaunchScreen.storyboard */,
@@ -250,6 +255,7 @@
 		97F3279C21D0BB3F0064C148 /* CommonItem */ = {
 			isa = PBXGroup;
 			children = (
+				97F327B121D1E2F80064C148 /* SwipeToChoose */,
 				97F3279D21D0BB470064C148 /* ButtonCamera */,
 			);
 			path = CommonItem;
@@ -263,6 +269,27 @@
 				97F327A021D0BB660064C148 /* ButtonCameraController.xib */,
 			);
 			path = ButtonCamera;
+			sourceTree = "<group>";
+		};
+		97F327B121D1E2F80064C148 /* SwipeToChoose */ = {
+			isa = PBXGroup;
+			children = (
+				97F327B721D1E3500064C148 /* SwipeCell */,
+				97F327B221D1E3280064C148 /* SwipeToChoose.h */,
+				97F327B321D1E3280064C148 /* SwipeToChoose.m */,
+				97F327B421D1E3280064C148 /* SwipeToChoose.xib */,
+			);
+			path = SwipeToChoose;
+			sourceTree = "<group>";
+		};
+		97F327B721D1E3500064C148 /* SwipeCell */ = {
+			isa = PBXGroup;
+			children = (
+				97F327B821D1E36A0064C148 /* SwipeCell.h */,
+				97F327B921D1E36A0064C148 /* SwipeCell.m */,
+				97F327BA21D1E36A0064C148 /* SwipeCell.xib */,
+			);
+			path = SwipeCell;
 			sourceTree = "<group>";
 		};
 		CCD0A94093260D551D24E0FB /* Frameworks */ = {
@@ -381,8 +408,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97F327BC21D1E36A0064C148 /* SwipeCell.xib in Resources */,
 				9749AAC421D07B19000CD9B1 /* LaunchScreen.storyboard in Resources */,
 				9749AAF521D07FE7000CD9B1 /* UploadingImageCell.xib in Resources */,
+				97F327B621D1E3280064C148 /* SwipeToChoose.xib in Resources */,
 				9749AAC121D07B19000CD9B1 /* Assets.xcassets in Resources */,
 				97F327A221D0BB660064C148 /* ButtonCameraController.xib in Resources */,
 				9749AABF21D07B18000CD9B1 /* Main.storyboard in Resources */,
@@ -480,12 +509,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9749AAF421D07FE7000CD9B1 /* UploadingImageCell.m in Sources */,
-				9749AABC21D07B18000CD9B1 /* ViewController.m in Sources */,
 				9749AAEF21D07DB7000CD9B1 /* UploadImageViewController.m in Sources */,
 				9749AAC721D07B19000CD9B1 /* main.m in Sources */,
 				97F327A121D0BB660064C148 /* ButtonCameraController.m in Sources */,
 				9749AAFA21D081DB000CD9B1 /* CameraController.m in Sources */,
 				9749AAFF21D083A1000CD9B1 /* CameraControllerManager.m in Sources */,
+				97F327BB21D1E36A0064C148 /* SwipeCell.m in Sources */,
+				97F327B521D1E3280064C148 /* SwipeToChoose.m in Sources */,
 				9749AAB921D07B18000CD9B1 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

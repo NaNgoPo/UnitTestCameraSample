@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CameraControllerManager/CameraControllerManager.h"
 #import "ButtonCameraController.h"
+#import "SwipeToChoose.h"
 #import "Toast.h"
 NS_ASSUME_NONNULL_BEGIN
 

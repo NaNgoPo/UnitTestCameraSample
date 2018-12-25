@@ -11,11 +11,13 @@
 @interface CameraController ()
 @property (weak, nonatomic) IBOutlet UIView *cameraDisplayView;
 @property (weak, nonatomic) IBOutlet UIView *viewButtonHolder;
-@property (nonatomic) CameraControllerManager *cameraManager;
-@property (nonatomic) ButtonCameraController *buttonCamera;
 @property (weak, nonatomic) IBOutlet UIButton *buttonFlash;
 @property (weak, nonatomic) IBOutlet UILabel *labelDuration;
+@property (weak, nonatomic) IBOutlet UIView *swipeChoosenViewHolder;
 
+@property (strong, nonatomic) SwipeToChoose *swipeToChooseView;
+@property (nonatomic) CameraControllerManager *cameraManager;
+@property (nonatomic) ButtonCameraController *buttonCamera;
 @end
 
 @implementation CameraController
@@ -27,6 +29,8 @@
   self.buttonCamera.delegate = self;
   [self.viewButtonHolder addSubview:self.buttonCamera.view];
   [self.viewButtonHolder setBackgroundColor:[UIColor clearColor]];
+  self.swipeToChooseView = [SwipeToChoose new];
+  [self.swipeChoosenViewHolder addSubview:self.swipeToChooseView.view];
   @weakify(self);
   [self.cameraManager.eventCameraController subscribeNext:^(id  _Nullable cameraFlashSignal) {
     @strongify(self);
@@ -65,6 +69,7 @@
 - (void)viewDidLayoutSubviews{
   [self.cameraManager ajustingLayout:self.cameraDisplayView];
   self.buttonCamera.view.frame = CGRectMake(0, 0, self.viewButtonHolder.frame.size.width, self.viewButtonHolder.frame.size.height);
+  self.swipeToChooseView.view.frame = CGRectMake(0, 0, self.swipeChoosenViewHolder.frame.size.width, self.swipeChoosenViewHolder.frame.size.height);//self.swipeChoosenViewHolder
 }
 - (IBAction)requestChangeCamera:(id)sender {
   [self.cameraManager switchCameraFrontBack];

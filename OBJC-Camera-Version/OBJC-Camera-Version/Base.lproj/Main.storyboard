@@ -332,6 +332,7 @@
                         <outlet property="buttonFlash" destination="gke-MS-ote" id="vNc-5i-Nxb"/>
                         <outlet property="cameraDisplayView" destination="ufs-w1-pFF" id="ria-mH-dlI"/>
                         <outlet property="labelDuration" destination="bqY-Bq-wyj" id="UPZ-W6-QmV"/>
+                        <outlet property="swipeChoosenViewHolder" destination="7hY-2s-kdn" id="XSc-oS-Tq3"/>
                         <outlet property="viewButtonHolder" destination="JLz-te-McR" id="dpx-VW-9La"/>
                         <segue destination="vUc-1j-ypx" kind="presentation" identifier="showUpload" modalPresentationStyle="overCurrentContext" id="Kys-HF-Rr8"/>
                     </connections>

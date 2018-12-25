@@ -39,9 +39,9 @@ typedef enum {
     self.myCurrentMode = kCameraModeVideo; // set default is photo mode
     
     [self createInitialCamera:AVCaptureDevicePositionBack withMode:self.myCurrentMode];
-    [NSTimer scheduledTimerWithTimeInterval:0.5 repeats:true block:^(NSTimer * _Nonnull timer) {
-      NSLog(@"%f",CMTimeGetSeconds(self.videoOutput.recordedDuration));
-    }];
+    //    [NSTimer scheduledTimerWithTimeInterval:0.5 repeats:true block:^(NSTimer * _Nonnull timer) {
+    //      NSLog(@"%f",CMTimeGetSeconds(self.videoOutput.recordedDuration));
+    //    }];
   }
   return self;
 }
@@ -131,12 +131,15 @@ typedef enum {
   switch (self.photoSetting.flashMode) {
     case AVCaptureFlashModeOn:
       self.photoSetting.flashMode = AVCaptureFlashModeOff;
+      [self.eventLogger sendNext:@"Flash: off"];
       break;
     case AVCaptureFlashModeOff:
       self.photoSetting.flashMode = AVCaptureFlashModeAuto;
+      [self.eventLogger sendNext:@"Flash: auto"];
       break;
     case AVCaptureFlashModeAuto:
       self.photoSetting.flashMode = AVCaptureFlashModeOn;
+      [self.eventLogger sendNext:@"Flash: on"];
       break;
     default:
       break;
@@ -151,7 +154,8 @@ typedef enum {
   }
 }
 -(void)excuteVideoRecord{
-  if(self.videoOutput == nil){
+  if((self.videoOutput == nil) || (self.videoOutput.connections.count < 1)){
+    [self.eventLogger sendNext:@"Oop error occured!"];
     return;
   }
   NSString *outputFilePath = [NSTemporaryDirectory() stringByAppendingPathComponent:[@"movie" stringByAppendingPathExtension:@"mov"]];
@@ -159,7 +163,7 @@ typedef enum {
     [self.eventLogger sendNext:@"end recording"];
     [self.videoOutput stopRecording];
   }else{
-     [self.eventLogger sendNext:@"start recording"];
+    [self.eventLogger sendNext:@"start recording"];
     [self.videoOutput startRecordingToOutputFileURL:[NSURL fileURLWithPath:outputFilePath] recordingDelegate:self];
     
   }
@@ -168,7 +172,7 @@ typedef enum {
   if(self.stillImageOutput == nil){
     return;
   }
-   [self.eventLogger sendNext:@"image captured recording"];
+  [self.eventLogger sendNext:@"image captured recording"];
   if([self.stillImageOutput connections].count > 0){
     [self.stillImageOutput capturePhotoWithSettings:self.photoSetting delegate:self];
   }
