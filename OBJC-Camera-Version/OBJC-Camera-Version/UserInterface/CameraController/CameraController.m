@@ -14,10 +14,13 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonFlash;
 @property (weak, nonatomic) IBOutlet UILabel *labelDuration;
 @property (weak, nonatomic) IBOutlet UIView *swipeChoosenViewHolder;
+@property (weak, nonatomic) IBOutlet UIView *focusView;
 
 @property (strong, nonatomic) SwipeToChoose *swipeToChooseView;
 @property (nonatomic) CameraControllerManager *cameraManager;
 @property (nonatomic) ButtonCameraController *buttonCamera;
+@property (nonatomic) HoleView *holeView;
+@property (nonatomic) BorderFocusView *focusViewRect;
 @end
 
 @implementation CameraController
@@ -26,12 +29,33 @@
   [super viewDidLoad];
   self.cameraManager = [CameraControllerManager new];
   self.buttonCamera = [ButtonCameraController new];
+  self.holeView = [HoleView new];
+  [self.focusView addSubview:self.holeView];
+  self.focusViewRect = [BorderFocusView new];
+  [self.focusView addSubview:self.focusViewRect];
   self.buttonCamera.delegate = self;
   [self.viewButtonHolder addSubview:self.buttonCamera.view];
   [self.viewButtonHolder setBackgroundColor:[UIColor clearColor]];
   self.swipeToChooseView = [SwipeToChoose new];
   [self.swipeChoosenViewHolder addSubview:self.swipeToChooseView.view];
   @weakify(self);
+  [self.swipeToChooseView.eventChangeMode subscribeNext:^(id  _Nullable info) {
+    [self.cameraManager setMode:(CameraModeType)[info integerValue]];
+    if([info integerValue] == kCameraModePhoto){
+      dispatch_async(dispatch_get_main_queue(), ^(void){
+        [self.labelDuration setHidden:true];
+      });
+    }else{
+      dispatch_async(dispatch_get_main_queue(), ^(void){
+        [self.labelDuration setHidden:false];
+      });
+    }
+  }];
+  [NSTimer scheduledTimerWithTimeInterval:0.5 repeats:true block:^(NSTimer * _Nonnull timer) {
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+      self.labelDuration.text = [self.cameraManager recoredTime];
+    });
+  }];
   [self.cameraManager.eventCameraController subscribeNext:^(id  _Nullable cameraFlashSignal) {
     @strongify(self);
     NSInteger flashMode = [(NSNumber *)cameraFlashSignal integerValue];
@@ -70,6 +94,8 @@
   [self.cameraManager ajustingLayout:self.cameraDisplayView];
   self.buttonCamera.view.frame = CGRectMake(0, 0, self.viewButtonHolder.frame.size.width, self.viewButtonHolder.frame.size.height);
   self.swipeToChooseView.view.frame = CGRectMake(0, 0, self.swipeChoosenViewHolder.frame.size.width, self.swipeChoosenViewHolder.frame.size.height);//self.swipeChoosenViewHolder
+  self.holeView.frame = CGRectMake(0, 0, self.focusView.frame.size.width, self.focusView.frame.size.height);
+  self.focusViewRect.frame = CGRectMake(0, 0, self.focusView.frame.size.width, self.focusView.frame.size.height);
 }
 - (IBAction)requestChangeCamera:(id)sender {
   [self.cameraManager switchCameraFrontBack];

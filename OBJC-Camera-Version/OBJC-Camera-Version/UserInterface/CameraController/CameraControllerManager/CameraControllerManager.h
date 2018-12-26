@@ -11,6 +11,7 @@
 #import <UIKit/UIKit.h>
 #import <Photos/Photos.h>
 #import <ReactiveObjC.h>
+#import "Const.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CameraControllerManager : NSObject<AVCapturePhotoCaptureDelegate,AVCaptureFileOutputRecordingDelegate>
@@ -22,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)switchCameraFrontBack;
 -(void)actionProcess;
 -(void)changeFlashMode;
+-(void)setMode:(CameraModeType)type;
+-(NSString*)recoredTime;
 @end
 
 NS_ASSUME_NONNULL_END

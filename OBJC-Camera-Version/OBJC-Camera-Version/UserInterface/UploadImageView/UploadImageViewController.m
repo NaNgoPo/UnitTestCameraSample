@@ -13,9 +13,10 @@
 @property (strong,nonatomic) UploadingImageController *controller;
 @property (strong,nonatomic) PHFetchResult<PHAsset *> *result;
 @property (strong,nonatomic) NSMutableArray *selectedList;
+@property (weak, nonatomic) IBOutlet UIView *carouselHolder;
 @property (weak, nonatomic) IBOutlet UILabel *labelPostItem;
 @property (weak, nonatomic) IBOutlet UIView *indicatedView;
-
+@property (strong,nonatomic) CarouselView *carousel;
 @end
 
 @implementation UploadImageViewController
@@ -24,6 +25,8 @@
   [super viewDidLoad];
   [self.mainCollectionUpdate registerNib:[UINib nibWithNibName:@"UploadingImageCell" bundle:nil] forCellWithReuseIdentifier:@"UploadingImageCell"];
   self.controller = [UploadingImageController new];
+  self.carousel = [CarouselView new];
+  [self.carouselHolder addSubview:self.carousel.view];
   @weakify(self);
   [self.controller.eventLoadImage subscribeNext:^(id  _Nullable loadImagesEvent) {
     @strongify(self);
@@ -39,9 +42,15 @@
       NSArray<NSIndexPath *> *visibleCells = [self.mainCollectionUpdate indexPathsForVisibleItems];
       [self.mainCollectionUpdate reloadItemsAtIndexPaths:visibleCells];
       [self setTextFotCountLabel];
+      NSMutableArray * selectedItems = [NSMutableArray new];
+      
+      [self.carousel changeDisplay:self.result fromInfo:self.selectedList];
     });
   }];
   [self setTextFotCountLabel];
+}
+-(void)viewDidLayoutSubviews{
+  self.carousel.view.frame = CGRectMake(0, 0, self.carouselHolder.frame.size.width, self.carouselHolder.frame.size.height);
 }
 -(void)setTextFotCountLabel{
   int validSlotCouting = [self.controller getCountValidItem];

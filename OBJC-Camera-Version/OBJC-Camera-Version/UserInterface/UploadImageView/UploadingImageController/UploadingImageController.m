@@ -45,15 +45,14 @@
   if(foundedIndex == INVALID_VALUE){ // the value is not inside the set, so need to add it
     [self setFirstEmptySpaceWith:index forList:self.itemList];
   }else{ // the value is inside the set,need to remove index
-     [self removeItemWith:index forList:self.itemList];
+    [self removeItemWith:index forList:self.itemList];
   }
-  NSLog(@"%@",self.itemList);
   [self.eventSelected sendNext:self.itemList];
 }
 -(void)setFirstEmptySpaceWith:(int)value forList:(NSMutableArray *)list{
   int foundedIndex = [self.viewModel firstIndexOfValue:INVALID_VALUE inArray:list];
   if(foundedIndex != INVALID_VALUE){// found an empty slot!!!
-     [list replaceObjectAtIndex:foundedIndex withObject:[NSNumber numberWithInt:value]];
+    [list replaceObjectAtIndex:foundedIndex withObject:[NSNumber numberWithInt:value]];
   }
 }
 -(void)removeItemWith:(int)value forList:(NSMutableArray *)list{

@@ -59,6 +59,10 @@
                                             <constraint firstItem="6IU-IA-EwZ" firstAttribute="top" secondItem="KDY-8s-Jr2" secondAttribute="top" id="yIn-WX-63e"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sxj-YB-ya7" userLabel="carouselView">
+                                        <rect key="frame" x="10" y="50" width="355" height="333"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Kb-Pb-Dlt" userLabel="ChoosenImageView">
                                         <rect key="frame" x="0.0" y="383" width="375" height="200"/>
                                         <subviews>
@@ -125,9 +129,13 @@
                                 <constraints>
                                     <constraint firstItem="CQL-0e-tpW" firstAttribute="leading" secondItem="MAs-JN-IzG" secondAttribute="leading" constant="10" id="01l-cA-fGT"/>
                                     <constraint firstItem="KDY-8s-Jr2" firstAttribute="top" secondItem="CQL-0e-tpW" secondAttribute="bottom" constant="10" id="50C-0h-KaJ"/>
+                                    <constraint firstItem="Sxj-YB-ya7" firstAttribute="top" secondItem="KDY-8s-Jr2" secondAttribute="top" id="5Yh-IG-2Vh"/>
                                     <constraint firstAttribute="trailing" secondItem="1Kb-Pb-Dlt" secondAttribute="trailing" id="6fH-9o-tCV"/>
                                     <constraint firstAttribute="bottom" secondItem="1Kb-Pb-Dlt" secondAttribute="bottom" id="70z-cc-zMP"/>
+                                    <constraint firstItem="Sxj-YB-ya7" firstAttribute="trailing" secondItem="KDY-8s-Jr2" secondAttribute="trailing" id="DZK-8n-d4T"/>
+                                    <constraint firstItem="Sxj-YB-ya7" firstAttribute="leading" secondItem="KDY-8s-Jr2" secondAttribute="leading" id="E1u-u9-orI"/>
                                     <constraint firstItem="KDY-8s-Jr2" firstAttribute="bottom" secondItem="1Kb-Pb-Dlt" secondAttribute="top" id="Gqv-tm-2IM"/>
+                                    <constraint firstItem="Sxj-YB-ya7" firstAttribute="bottom" secondItem="KDY-8s-Jr2" secondAttribute="bottom" id="HBO-s7-dC9"/>
                                     <constraint firstAttribute="bottom" secondItem="IQK-qf-wlZ" secondAttribute="bottom" constant="5" id="IzI-ft-F7h"/>
                                     <constraint firstAttribute="trailing" secondItem="KDY-8s-Jr2" secondAttribute="trailing" constant="10" id="Ufb-pN-B4N"/>
                                     <constraint firstItem="IQK-qf-wlZ" firstAttribute="centerX" secondItem="MAs-JN-IzG" secondAttribute="centerX" id="iH3-A2-mmd"/>
@@ -149,6 +157,7 @@
                         <viewLayoutGuide key="safeArea" id="Djy-JB-adM"/>
                     </view>
                     <connections>
+                        <outlet property="carouselHolder" destination="Sxj-YB-ya7" id="pxq-N9-Rf6"/>
                         <outlet property="indicatedView" destination="IQK-qf-wlZ" id="WRi-QS-61x"/>
                         <outlet property="labelPostItem" destination="AKF-ef-zGN" id="s7Z-sP-13z"/>
                         <outlet property="mainCollectionUpdate" destination="32L-i2-97m" id="zsP-lU-V2H"/>
@@ -333,6 +342,7 @@
                     <connections>
                         <outlet property="buttonFlash" destination="gke-MS-ote" id="vNc-5i-Nxb"/>
                         <outlet property="cameraDisplayView" destination="ufs-w1-pFF" id="ria-mH-dlI"/>
+                        <outlet property="focusView" destination="LWA-Ra-BuU" id="xW8-HK-hUa"/>
                         <outlet property="labelDuration" destination="bqY-Bq-wyj" id="UPZ-W6-QmV"/>
                         <outlet property="swipeChoosenViewHolder" destination="7hY-2s-kdn" id="XSc-oS-Tq3"/>
                         <outlet property="viewButtonHolder" destination="JLz-te-McR" id="dpx-VW-9La"/>

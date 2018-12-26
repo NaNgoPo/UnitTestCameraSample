@@ -32,6 +32,10 @@
 		97F327C421D2158E0064C148 /* ImageDevicePhotosRepo.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F327C321D2158E0064C148 /* ImageDevicePhotosRepo.m */; };
 		97F327C921D327220064C148 /* UploadingImageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F327C821D327220064C148 /* UploadingImageViewModel.m */; };
 		97F327CD21D329CD0064C148 /* Const.h in Sources */ = {isa = PBXBuildFile; fileRef = 97F327CB21D328C00064C148 /* Const.h */; };
+		97F327D221D33D870064C148 /* CarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F327D021D33D870064C148 /* CarouselView.m */; };
+		97F327D321D33D870064C148 /* CarouselView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97F327D121D33D870064C148 /* CarouselView.xib */; };
+		97F327D921D3680D0064C148 /* HoleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F327D821D3680D0064C148 /* HoleView.m */; };
+		97F327DC21D3718B0064C148 /* BorderFocusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F327DB21D3718B0064C148 /* BorderFocusView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +101,13 @@
 		97F327C721D327220064C148 /* UploadingImageViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UploadingImageViewModel.h; sourceTree = "<group>"; };
 		97F327C821D327220064C148 /* UploadingImageViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UploadingImageViewModel.m; sourceTree = "<group>"; };
 		97F327CB21D328C00064C148 /* Const.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Const.h; sourceTree = "<group>"; };
+		97F327CF21D33D870064C148 /* CarouselView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarouselView.h; sourceTree = "<group>"; };
+		97F327D021D33D870064C148 /* CarouselView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarouselView.m; sourceTree = "<group>"; };
+		97F327D121D33D870064C148 /* CarouselView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarouselView.xib; sourceTree = "<group>"; };
+		97F327D721D3680D0064C148 /* HoleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HoleView.h; sourceTree = "<group>"; };
+		97F327D821D3680D0064C148 /* HoleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HoleView.m; sourceTree = "<group>"; };
+		97F327DA21D3718B0064C148 /* BorderFocusView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BorderFocusView.h; sourceTree = "<group>"; };
+		97F327DB21D3718B0064C148 /* BorderFocusView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BorderFocusView.m; sourceTree = "<group>"; };
 		BC04E0A648BED3D12BEB1967 /* Pods-OBJC-Camera-VersionUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OBJC-Camera-VersionUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OBJC-Camera-VersionUITests/Pods-OBJC-Camera-VersionUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F0E680E7F28D8462030E1F71 /* Pods-OBJC-Camera-Version.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OBJC-Camera-Version.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OBJC-Camera-Version/Pods-OBJC-Camera-Version.debug.xcconfig"; sourceTree = "<group>"; };
 		FDDC9A3017A2AA57BD074098 /* libPods-OBJC-Camera-Version.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OBJC-Camera-Version.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -270,6 +281,8 @@
 		97F3279C21D0BB3F0064C148 /* CommonItem */ = {
 			isa = PBXGroup;
 			children = (
+				97F327D421D367D30064C148 /* FocusView */,
+				97F327CE21D33D6B0064C148 /* CarouselView */,
 				97F327B121D1E2F80064C148 /* SwipeToChoose */,
 				97F3279D21D0BB470064C148 /* ButtonCamera */,
 			);
@@ -340,6 +353,43 @@
 				97F327CB21D328C00064C148 /* Const.h */,
 			);
 			path = Const;
+			sourceTree = "<group>";
+		};
+		97F327CE21D33D6B0064C148 /* CarouselView */ = {
+			isa = PBXGroup;
+			children = (
+				97F327CF21D33D870064C148 /* CarouselView.h */,
+				97F327D021D33D870064C148 /* CarouselView.m */,
+				97F327D121D33D870064C148 /* CarouselView.xib */,
+			);
+			path = CarouselView;
+			sourceTree = "<group>";
+		};
+		97F327D421D367D30064C148 /* FocusView */ = {
+			isa = PBXGroup;
+			children = (
+				97F327D621D367E40064C148 /* BorderFocusView */,
+				97F327D521D367DB0064C148 /* HoleView */,
+			);
+			path = FocusView;
+			sourceTree = "<group>";
+		};
+		97F327D521D367DB0064C148 /* HoleView */ = {
+			isa = PBXGroup;
+			children = (
+				97F327D721D3680D0064C148 /* HoleView.h */,
+				97F327D821D3680D0064C148 /* HoleView.m */,
+			);
+			path = HoleView;
+			sourceTree = "<group>";
+		};
+		97F327D621D367E40064C148 /* BorderFocusView */ = {
+			isa = PBXGroup;
+			children = (
+				97F327DA21D3718B0064C148 /* BorderFocusView.h */,
+				97F327DB21D3718B0064C148 /* BorderFocusView.m */,
+			);
+			path = BorderFocusView;
 			sourceTree = "<group>";
 		};
 		CCD0A94093260D551D24E0FB /* Frameworks */ = {
@@ -460,6 +510,7 @@
 			files = (
 				97F327BC21D1E36A0064C148 /* SwipeCell.xib in Resources */,
 				9749AAC421D07B19000CD9B1 /* LaunchScreen.storyboard in Resources */,
+				97F327D321D33D870064C148 /* CarouselView.xib in Resources */,
 				9749AAF521D07FE7000CD9B1 /* UploadingImageCell.xib in Resources */,
 				97F327B621D1E3280064C148 /* SwipeToChoose.xib in Resources */,
 				9749AAC121D07B19000CD9B1 /* Assets.xcassets in Resources */,
@@ -563,12 +614,15 @@
 				9749AAEF21D07DB7000CD9B1 /* UploadImageViewController.m in Sources */,
 				9749AAC721D07B19000CD9B1 /* main.m in Sources */,
 				97F327C421D2158E0064C148 /* ImageDevicePhotosRepo.m in Sources */,
+				97F327DC21D3718B0064C148 /* BorderFocusView.m in Sources */,
 				97F327A121D0BB660064C148 /* ButtonCameraController.m in Sources */,
+				97F327D221D33D870064C148 /* CarouselView.m in Sources */,
 				9749AAFA21D081DB000CD9B1 /* CameraController.m in Sources */,
 				97F327C921D327220064C148 /* UploadingImageViewModel.m in Sources */,
 				9749AAFF21D083A1000CD9B1 /* CameraControllerManager.m in Sources */,
 				97F327BB21D1E36A0064C148 /* SwipeCell.m in Sources */,
 				97F327B521D1E3280064C148 /* SwipeToChoose.m in Sources */,
+				97F327D921D3680D0064C148 /* HoleView.m in Sources */,
 				9749AAB921D07B18000CD9B1 /* AppDelegate.m in Sources */,
 				97F327C021D212680064C148 /* UploadingImageController.m in Sources */,
 			);

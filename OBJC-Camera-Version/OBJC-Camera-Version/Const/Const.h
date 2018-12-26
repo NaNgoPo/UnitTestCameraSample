@@ -10,4 +10,8 @@
 #define Const_h
 
 #define INVALID_VALUE -1
+typedef enum :int{
+  kCameraModePhoto = 0,
+  kCameraModeVideo = 1
+} CameraModeType;
 #endif /* Const_h */

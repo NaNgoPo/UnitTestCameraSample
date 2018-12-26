@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "SwipeCell.h"
+#import <ReactiveObjC.h>
+#import "Const.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SwipeToChoose : UIViewController<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
-
+@property (nonatomic, strong) RACSubject *eventChangeMode;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -26,6 +26,7 @@
   self.currentSelected = 0;
   self.leftIndex = 2;
   self.rightIndex = 3;
+  self.eventChangeMode = [RACSubject new];
 }
 -(void)viewDidAppear:(BOOL)animated{
   [super viewDidAppear:animated];
@@ -71,6 +72,11 @@
 }
 -(void)moveToPossition:(int)withValue{
   self.currentSelected = withValue;
+  if(self.currentSelected == self.leftIndex){
+    [self.eventChangeMode sendNext:[NSNumber numberWithInt:kCameraModePhoto]];
+  }else{
+    [self.eventChangeMode sendNext:[NSNumber numberWithInt:kCameraModeVideo]];
+  }
   [self.collecitonViewMain reloadData];
   dispatch_async(dispatch_get_main_queue(), ^{
     [self.collecitonViewMain scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:withValue inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:true];

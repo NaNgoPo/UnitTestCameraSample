@@ -8,10 +8,7 @@
 
 #import "CameraControllerManager.h"
 
-typedef enum {
-  kCameraModePhoto = 0,
-  kCameraModeVideo = 1
-} CameraModeType;
+
 
 @interface CameraControllerManager ()
 @property (nonatomic) AVCaptureSession *capturesSession;
@@ -39,9 +36,7 @@ typedef enum {
     self.myCurrentMode = kCameraModePhoto; // set default is photo mode
     
     [self createInitialCamera:AVCaptureDevicePositionBack withMode:self.myCurrentMode];
-    //    [NSTimer scheduledTimerWithTimeInterval:0.5 repeats:true block:^(NSTimer * _Nonnull timer) {
-    //      NSLog(@"%f",CMTimeGetSeconds(self.videoOutput.recordedDuration));
-    //    }];
+
   }
   return self;
 }
@@ -178,7 +173,13 @@ typedef enum {
     [self.stillImageOutput capturePhotoWithSettings:captureSetting delegate:self];
   }
 }
-
+-(NSString*)recoredTime{
+  int sec = 0;
+  if(self.videoOutput.isRecording){ // only reload the info if running
+    sec = (int)CMTimeGetSeconds(self.videoOutput.recordedDuration);
+  }
+  return [NSString stringWithFormat:@"00:00:%.2d",sec];
+}
 -(void)switchCameraFrontBack{
   if(self.capturesSession.inputs.count < 1 ){
     return;
@@ -193,7 +194,10 @@ typedef enum {
   }
   return;
 }
-
+-(void)setMode:(CameraModeType)type{
+  self.myCurrentMode = type;
+  [self createInitialCamera:AVCaptureDevicePositionBack];
+}
 #pragma mark - Camera private function
 - (void)captureOutput:(AVCapturePhotoOutput *)output didFinishProcessingPhoto:(AVCapturePhoto *)photo error:(NSError *)error{
   [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {

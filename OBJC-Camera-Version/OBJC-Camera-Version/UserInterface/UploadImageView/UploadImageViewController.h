@@ -10,6 +10,7 @@
 #import "UploadingImageController.h"
 #import <ReactiveObjC.h>
 #import "UploadingImageCell.h"
+#import "CarouselView.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UploadImageViewController : UIViewController<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
