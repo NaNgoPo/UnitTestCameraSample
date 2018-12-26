@@ -36,7 +36,7 @@ typedef enum {
     self.photoSetting = [AVCapturePhotoSettings new];
     self.eventCameraController = [RACSubject subject];
     self.eventLogger =  [RACSubject subject];
-    self.myCurrentMode = kCameraModeVideo; // set default is photo mode
+    self.myCurrentMode = kCameraModePhoto; // set default is photo mode
     
     [self createInitialCamera:AVCaptureDevicePositionBack withMode:self.myCurrentMode];
     //    [NSTimer scheduledTimerWithTimeInterval:0.5 repeats:true block:^(NSTimer * _Nonnull timer) {
@@ -172,9 +172,10 @@ typedef enum {
   if(self.stillImageOutput == nil){
     return;
   }
-  [self.eventLogger sendNext:@"image captured recording"];
+  [self.eventLogger sendNext:@"Image captured"];
   if([self.stillImageOutput connections].count > 0){
-    [self.stillImageOutput capturePhotoWithSettings:self.photoSetting delegate:self];
+    AVCapturePhotoSettings *captureSetting = [AVCapturePhotoSettings photoSettingsFromPhotoSettings:self.photoSetting];
+    [self.stillImageOutput capturePhotoWithSettings:captureSetting delegate:self];
   }
 }
 

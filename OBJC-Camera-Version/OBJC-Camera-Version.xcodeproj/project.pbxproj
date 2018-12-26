@@ -28,6 +28,10 @@
 		97F327B621D1E3280064C148 /* SwipeToChoose.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97F327B421D1E3280064C148 /* SwipeToChoose.xib */; };
 		97F327BB21D1E36A0064C148 /* SwipeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F327B921D1E36A0064C148 /* SwipeCell.m */; };
 		97F327BC21D1E36A0064C148 /* SwipeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97F327BA21D1E36A0064C148 /* SwipeCell.xib */; };
+		97F327C021D212680064C148 /* UploadingImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F327BF21D212680064C148 /* UploadingImageController.m */; };
+		97F327C421D2158E0064C148 /* ImageDevicePhotosRepo.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F327C321D2158E0064C148 /* ImageDevicePhotosRepo.m */; };
+		97F327C921D327220064C148 /* UploadingImageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F327C821D327220064C148 /* UploadingImageViewModel.m */; };
+		97F327CD21D329CD0064C148 /* Const.h in Sources */ = {isa = PBXBuildFile; fileRef = 97F327CB21D328C00064C148 /* Const.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +90,13 @@
 		97F327B821D1E36A0064C148 /* SwipeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwipeCell.h; sourceTree = "<group>"; };
 		97F327B921D1E36A0064C148 /* SwipeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SwipeCell.m; sourceTree = "<group>"; };
 		97F327BA21D1E36A0064C148 /* SwipeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwipeCell.xib; sourceTree = "<group>"; };
+		97F327BE21D212680064C148 /* UploadingImageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UploadingImageController.h; sourceTree = "<group>"; };
+		97F327BF21D212680064C148 /* UploadingImageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UploadingImageController.m; sourceTree = "<group>"; };
+		97F327C221D2158E0064C148 /* ImageDevicePhotosRepo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageDevicePhotosRepo.h; sourceTree = "<group>"; };
+		97F327C321D2158E0064C148 /* ImageDevicePhotosRepo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageDevicePhotosRepo.m; sourceTree = "<group>"; };
+		97F327C721D327220064C148 /* UploadingImageViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UploadingImageViewModel.h; sourceTree = "<group>"; };
+		97F327C821D327220064C148 /* UploadingImageViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UploadingImageViewModel.m; sourceTree = "<group>"; };
+		97F327CB21D328C00064C148 /* Const.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Const.h; sourceTree = "<group>"; };
 		BC04E0A648BED3D12BEB1967 /* Pods-OBJC-Camera-VersionUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OBJC-Camera-VersionUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OBJC-Camera-VersionUITests/Pods-OBJC-Camera-VersionUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F0E680E7F28D8462030E1F71 /* Pods-OBJC-Camera-Version.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OBJC-Camera-Version.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OBJC-Camera-Version/Pods-OBJC-Camera-Version.debug.xcconfig"; sourceTree = "<group>"; };
 		FDDC9A3017A2AA57BD074098 /* libPods-OBJC-Camera-Version.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OBJC-Camera-Version.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,6 +168,7 @@
 		9749AAB621D07B18000CD9B1 /* OBJC-Camera-Version */ = {
 			isa = PBXGroup;
 			children = (
+				97F327CA21D328B40064C148 /* Const */,
 				9749AAEB21D07D24000CD9B1 /* Entity */,
 				9749AAEA21D07D1E000CD9B1 /* Interactor */,
 				9749AAE921D07CFC000CD9B1 /* UserInterface */,
@@ -209,6 +221,7 @@
 		9749AAEB21D07D24000CD9B1 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				97F327C121D215620064C148 /* ImageDevicePhotosRepository */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -216,6 +229,8 @@
 		9749AAEC21D07D99000CD9B1 /* UploadImageView */ = {
 			isa = PBXGroup;
 			children = (
+				97F327C621D327050064C148 /* UploadingImageViewModel */,
+				97F327BD21D212440064C148 /* UploadingImageController */,
 				9749AAF021D07FC9000CD9B1 /* CustomCell */,
 				9749AAED21D07DB7000CD9B1 /* UploadImageViewController.h */,
 				9749AAEE21D07DB7000CD9B1 /* UploadImageViewController.m */,
@@ -290,6 +305,41 @@
 				97F327BA21D1E36A0064C148 /* SwipeCell.xib */,
 			);
 			path = SwipeCell;
+			sourceTree = "<group>";
+		};
+		97F327BD21D212440064C148 /* UploadingImageController */ = {
+			isa = PBXGroup;
+			children = (
+				97F327BE21D212680064C148 /* UploadingImageController.h */,
+				97F327BF21D212680064C148 /* UploadingImageController.m */,
+			);
+			path = UploadingImageController;
+			sourceTree = "<group>";
+		};
+		97F327C121D215620064C148 /* ImageDevicePhotosRepository */ = {
+			isa = PBXGroup;
+			children = (
+				97F327C221D2158E0064C148 /* ImageDevicePhotosRepo.h */,
+				97F327C321D2158E0064C148 /* ImageDevicePhotosRepo.m */,
+			);
+			path = ImageDevicePhotosRepository;
+			sourceTree = "<group>";
+		};
+		97F327C621D327050064C148 /* UploadingImageViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				97F327C721D327220064C148 /* UploadingImageViewModel.h */,
+				97F327C821D327220064C148 /* UploadingImageViewModel.m */,
+			);
+			path = UploadingImageViewModel;
+			sourceTree = "<group>";
+		};
+		97F327CA21D328B40064C148 /* Const */ = {
+			isa = PBXGroup;
+			children = (
+				97F327CB21D328C00064C148 /* Const.h */,
+			);
+			path = Const;
 			sourceTree = "<group>";
 		};
 		CCD0A94093260D551D24E0FB /* Frameworks */ = {
@@ -508,15 +558,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97F327CD21D329CD0064C148 /* Const.h in Sources */,
 				9749AAF421D07FE7000CD9B1 /* UploadingImageCell.m in Sources */,
 				9749AAEF21D07DB7000CD9B1 /* UploadImageViewController.m in Sources */,
 				9749AAC721D07B19000CD9B1 /* main.m in Sources */,
+				97F327C421D2158E0064C148 /* ImageDevicePhotosRepo.m in Sources */,
 				97F327A121D0BB660064C148 /* ButtonCameraController.m in Sources */,
 				9749AAFA21D081DB000CD9B1 /* CameraController.m in Sources */,
+				97F327C921D327220064C148 /* UploadingImageViewModel.m in Sources */,
 				9749AAFF21D083A1000CD9B1 /* CameraControllerManager.m in Sources */,
 				97F327BB21D1E36A0064C148 /* SwipeCell.m in Sources */,
 				97F327B521D1E3280064C148 /* SwipeToChoose.m in Sources */,
 				9749AAB921D07B18000CD9B1 /* AppDelegate.m in Sources */,
+				97F327C021D212680064C148 /* UploadingImageController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

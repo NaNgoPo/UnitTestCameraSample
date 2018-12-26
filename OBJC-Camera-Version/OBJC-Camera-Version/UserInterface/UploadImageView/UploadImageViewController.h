@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "UploadingImageController.h"
+#import <ReactiveObjC.h>
+#import "UploadingImageCell.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UploadImageViewController : UIViewController<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>

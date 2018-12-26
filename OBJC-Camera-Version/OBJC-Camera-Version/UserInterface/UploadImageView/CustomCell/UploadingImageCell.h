@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <Photos/Photos.h>
+#import <ReactiveObjC.h>
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UploadingImageCell : UICollectionViewCell
-
+-(void)setupUploadingCell:(PHAsset *)asset withHighLight:(BOOL)isHighLight;
 @end
 
 NS_ASSUME_NONNULL_END

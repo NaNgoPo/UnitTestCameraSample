@@ -99,7 +99,7 @@
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IQK-qf-wlZ" userLabel="IndicatedView">
                                         <rect key="frame" x="94" y="528" width="187.5" height="50"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Post(1)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKF-ef-zGN">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Post" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKF-ef-zGN">
                                                 <rect key="frame" x="0.0" y="0.0" width="187.5" height="50"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -149,6 +149,8 @@
                         <viewLayoutGuide key="safeArea" id="Djy-JB-adM"/>
                     </view>
                     <connections>
+                        <outlet property="indicatedView" destination="IQK-qf-wlZ" id="WRi-QS-61x"/>
+                        <outlet property="labelPostItem" destination="AKF-ef-zGN" id="s7Z-sP-13z"/>
                         <outlet property="mainCollectionUpdate" destination="32L-i2-97m" id="zsP-lU-V2H"/>
                     </connections>
                 </viewController>
