@@ -37,7 +37,7 @@
 }
 -(void)getAllItemInDevicePhotos{
   [self.imageRepository getAllItemInPhotosDevice];
-  return;
+  [self.imageRepository getAllAlbumInDevice];
 }
 
 -(void)selectAssetAtIndex:(int)index andList:(PHFetchResult<PHAsset *> *)assetList{

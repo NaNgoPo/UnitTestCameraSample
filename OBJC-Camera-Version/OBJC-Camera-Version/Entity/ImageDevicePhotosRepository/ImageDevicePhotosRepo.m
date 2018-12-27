@@ -31,4 +31,17 @@
     
   }];
 }
+-(void)getAllAlbumInDevice{
+  [self requestAuthorize];// call the authorize
+  PHFetchResult<PHCollection *> *result = [PHCollectionList fetchTopLevelUserCollectionsWithOptions:nil];
+  PHFetchResult<PHAssetCollection *> *resultColection = [PHAssetCollection fetchAssetCollectionsWithType:(PHAssetCollectionTypeSmartAlbum) subtype:(PHAssetCollectionSubtypeAny) options:nil];
+  for (int i=0; i<result.count; i++) {
+    PHCollection *collection = [result objectAtIndex:i];
+    NSLog(@"PHCollection %@",collection.localizedTitle);
+  }
+  for (int i=0; i<resultColection.count; i++) {
+    PHAssetCollection *collection = [resultColection objectAtIndex:i];
+    NSLog(@"PHAssetCollection %@",collection.localizedTitle);
+  }
+}
 @end

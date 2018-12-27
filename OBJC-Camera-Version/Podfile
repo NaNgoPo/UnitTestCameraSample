@@ -9,6 +9,7 @@ target 'OBJC-Camera-Version' do
   pod 'iCarousel', '~> 1.8'
   pod 'ReactiveObjC'
   pod 'Toast', '~> 4.0'
+  pod 'OCMock'
   target 'OBJC-Camera-VersionTests' do
     inherit! :search_paths
     # Pods for testing

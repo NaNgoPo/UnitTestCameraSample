@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIView *focusView;
 
 @property (strong, nonatomic) SwipeToChoose *swipeToChooseView;
-@property (nonatomic) CameraControllerManager *cameraManager;
+//@property (nonatomic) CameraControllerManager *cameraManager;
 @property (nonatomic) ButtonCameraController *buttonCamera;
 @property (nonatomic) HoleView *holeView;
 @property (nonatomic) BorderFocusView *focusViewRect;
@@ -40,7 +40,9 @@
   [self.swipeChoosenViewHolder addSubview:self.swipeToChooseView.view];
   @weakify(self);
   [self.swipeToChooseView.eventChangeMode subscribeNext:^(id  _Nullable info) {
-    [self.cameraManager setMode:(CameraModeType)[info integerValue]];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+      [self.cameraManager setMode:(CameraModeType)[info integerValue]];
+    });
     if([info integerValue] == kCameraModePhoto){
       dispatch_async(dispatch_get_main_queue(), ^(void){
         [self.labelDuration setHidden:true];

@@ -16,6 +16,6 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CameraController : UIViewController<ButtonDelegate>
-
+@property (nonatomic) CameraControllerManager *cameraManager;
 @end
 NS_ASSUME_NONNULL_END

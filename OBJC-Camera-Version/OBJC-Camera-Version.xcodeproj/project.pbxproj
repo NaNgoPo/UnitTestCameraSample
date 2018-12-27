@@ -36,6 +36,8 @@
 		97F327D321D33D870064C148 /* CarouselView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97F327D121D33D870064C148 /* CarouselView.xib */; };
 		97F327D921D3680D0064C148 /* HoleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F327D821D3680D0064C148 /* HoleView.m */; };
 		97F327DC21D3718B0064C148 /* BorderFocusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F327DB21D3718B0064C148 /* BorderFocusView.m */; };
+		97F327E021D47D7A0064C148 /* CameraControllerViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F327DF21D47D7A0064C148 /* CameraControllerViewModel.m */; };
+		97F327E421D48F3D0064C148 /* AppAVCaptureSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F327E321D48F3D0064C148 /* AppAVCaptureSession.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +110,10 @@
 		97F327D821D3680D0064C148 /* HoleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HoleView.m; sourceTree = "<group>"; };
 		97F327DA21D3718B0064C148 /* BorderFocusView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BorderFocusView.h; sourceTree = "<group>"; };
 		97F327DB21D3718B0064C148 /* BorderFocusView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BorderFocusView.m; sourceTree = "<group>"; };
+		97F327DE21D47D7A0064C148 /* CameraControllerViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraControllerViewModel.h; sourceTree = "<group>"; };
+		97F327DF21D47D7A0064C148 /* CameraControllerViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraControllerViewModel.m; sourceTree = "<group>"; };
+		97F327E221D48F3D0064C148 /* AppAVCaptureSession.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppAVCaptureSession.h; sourceTree = "<group>"; };
+		97F327E321D48F3D0064C148 /* AppAVCaptureSession.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppAVCaptureSession.m; sourceTree = "<group>"; };
 		BC04E0A648BED3D12BEB1967 /* Pods-OBJC-Camera-VersionUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OBJC-Camera-VersionUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OBJC-Camera-VersionUITests/Pods-OBJC-Camera-VersionUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F0E680E7F28D8462030E1F71 /* Pods-OBJC-Camera-Version.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OBJC-Camera-Version.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OBJC-Camera-Version/Pods-OBJC-Camera-Version.debug.xcconfig"; sourceTree = "<group>"; };
 		FDDC9A3017A2AA57BD074098 /* libPods-OBJC-Camera-Version.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OBJC-Camera-Version.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -232,6 +238,7 @@
 		9749AAEB21D07D24000CD9B1 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				97F327E121D48F1C0064C148 /* AppAVCaptureSession */,
 				97F327C121D215620064C148 /* ImageDevicePhotosRepository */,
 			);
 			path = Entity;
@@ -262,6 +269,7 @@
 		9749AAF621D081B9000CD9B1 /* CameraController */ = {
 			isa = PBXGroup;
 			children = (
+				97F327DD21D47CF30064C148 /* CameraControllerViewModel */,
 				9749AAFC21D0837E000CD9B1 /* CameraControllerManager */,
 				9749AAF721D081DB000CD9B1 /* CameraController.h */,
 				9749AAF821D081DB000CD9B1 /* CameraController.m */,
@@ -390,6 +398,24 @@
 				97F327DB21D3718B0064C148 /* BorderFocusView.m */,
 			);
 			path = BorderFocusView;
+			sourceTree = "<group>";
+		};
+		97F327DD21D47CF30064C148 /* CameraControllerViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				97F327DE21D47D7A0064C148 /* CameraControllerViewModel.h */,
+				97F327DF21D47D7A0064C148 /* CameraControllerViewModel.m */,
+			);
+			path = CameraControllerViewModel;
+			sourceTree = "<group>";
+		};
+		97F327E121D48F1C0064C148 /* AppAVCaptureSession */ = {
+			isa = PBXGroup;
+			children = (
+				97F327E221D48F3D0064C148 /* AppAVCaptureSession.h */,
+				97F327E321D48F3D0064C148 /* AppAVCaptureSession.m */,
+			);
+			path = AppAVCaptureSession;
 			sourceTree = "<group>";
 		};
 		CCD0A94093260D551D24E0FB /* Frameworks */ = {
@@ -610,6 +636,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				97F327CD21D329CD0064C148 /* Const.h in Sources */,
+				97F327E021D47D7A0064C148 /* CameraControllerViewModel.m in Sources */,
 				9749AAF421D07FE7000CD9B1 /* UploadingImageCell.m in Sources */,
 				9749AAEF21D07DB7000CD9B1 /* UploadImageViewController.m in Sources */,
 				9749AAC721D07B19000CD9B1 /* main.m in Sources */,
@@ -620,6 +647,7 @@
 				9749AAFA21D081DB000CD9B1 /* CameraController.m in Sources */,
 				97F327C921D327220064C148 /* UploadingImageViewModel.m in Sources */,
 				9749AAFF21D083A1000CD9B1 /* CameraControllerManager.m in Sources */,
+				97F327E421D48F3D0064C148 /* AppAVCaptureSession.m in Sources */,
 				97F327BB21D1E36A0064C148 /* SwipeCell.m in Sources */,
 				97F327B521D1E3280064C148 /* SwipeToChoose.m in Sources */,
 				97F327D921D3680D0064C148 /* HoleView.m in Sources */,

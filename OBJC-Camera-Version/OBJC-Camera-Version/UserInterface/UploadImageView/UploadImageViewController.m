@@ -13,13 +13,21 @@
 @property (strong,nonatomic) UploadingImageController *controller;
 @property (strong,nonatomic) PHFetchResult<PHAsset *> *result;
 @property (strong,nonatomic) NSMutableArray *selectedList;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraitTop;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraitHeight;
 @property (weak, nonatomic) IBOutlet UIView *carouselHolder;
 @property (weak, nonatomic) IBOutlet UILabel *labelPostItem;
 @property (weak, nonatomic) IBOutlet UIView *indicatedView;
+@property (weak, nonatomic) IBOutlet UIView *mainViewHolder;
+@property (weak, nonatomic) IBOutlet UIView *backGroundView;
 @property (strong,nonatomic) CarouselView *carousel;
+@property (assign,nonatomic) double firstX;
+@property (assign,nonatomic) double firstY;
 @end
 
 @implementation UploadImageViewController
+const double PADDING_FRAME = 64.0;
+const double MAX_VAL = 0.6;
 
 - (void)viewDidLoad {
   [super viewDidLoad];
@@ -27,6 +35,10 @@
   self.controller = [UploadingImageController new];
   self.carousel = [CarouselView new];
   [self.carouselHolder addSubview:self.carousel.view];
+  self.firstX = 0.0;
+  self.firstY = 0.0;
+  [self setUpGesture];
+  [self addObserver:self.mainViewHolder forKeyPath:@"center" options:NSKeyValueObservingOptionOld context:NULL];
   @weakify(self);
   [self.controller.eventLoadImage subscribeNext:^(id  _Nullable loadImagesEvent) {
     @strongify(self);
@@ -49,8 +61,57 @@
   }];
   [self setTextFotCountLabel];
 }
--(void)viewDidLayoutSubviews{
+- (void)setUpGesture{
+  UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragGesture:)];
+  [panRecognizer setMinimumNumberOfTouches:1];
+  [panRecognizer setMaximumNumberOfTouches:1];
+  [self.mainViewHolder addGestureRecognizer:panRecognizer];
+  
+  UISwipeGestureRecognizer *mSwipeUpRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeDetection)];
+  [mSwipeUpRecognizer setDirection:UISwipeGestureRecognizerDirectionDown];
+  [self.view addGestureRecognizer:mSwipeUpRecognizer];
+}
+-(void)swipeDetection{
+  [self dismissViewControllerAnimated:true completion:^{
+    // do nothing.....
+  }];
+}
+-(void)dragGesture:(UIPanGestureRecognizer*)sender {
+  
+  [self.view bringSubviewToFront:sender.view];
+  CGPoint translatedPoint = [sender translationInView:sender.view.superview];
+  
+  if (sender.state == UIGestureRecognizerStateBegan) {
+    self.firstX = self.backGroundView.frame.size.width/2.0;//sender.view.center.x;
+    self.firstY = sender.view.center.y;
+  }
+  translatedPoint = CGPointMake(sender.view.center.x, sender.view.center.y+translatedPoint.y);
+  
+  [sender.view setCenter:translatedPoint];
+  [sender setTranslation:CGPointZero inView:sender.view];
+  
+  if (sender.state == UIGestureRecognizerStateEnded) {
+    CGFloat finalY = translatedPoint.y ;// translatedPoint.y + (.35*[(UIPanGestureRecognizer*)sender velocityInView:self.view].y);
+    CGFloat correctY = finalY - self.backGroundView.frame.size.height / 2.0;
+    if (correctY > self.view.frame.size.height/2) { // to avoid status bar
+      [self correctColor:0.0];
+      [self dismissViewControllerAnimated:true completion:^{
+        // do nothing.....
+      }];
+    } else {
+      finalY = PADDING_FRAME;
+      [UIView animateWithDuration:0.2 animations:^{
+         [sender.view setCenter:CGPointMake(sender.view.center.x,  self.backGroundView.frame.size.height / 2.0 + finalY)];
+      }];
+    }
+  }
+  [self calculatedAndHightLightView];
+}
+- (void)viewDidLayoutSubviews{
   self.carousel.view.frame = CGRectMake(0, 0, self.carouselHolder.frame.size.width, self.carouselHolder.frame.size.height);
+ 
+  self.constraitHeight.constant = self.backGroundView.frame.size.height - PADDING_FRAME;
+  
 }
 -(void)setTextFotCountLabel{
   int validSlotCouting = [self.controller getCountValidItem];
@@ -65,6 +126,7 @@
 }
 -(void)viewDidAppear:(BOOL)animated{
   [super viewDidAppear:animated];
+  [self calculatedAndHightLightView];
   [self.controller getAllItemInDevicePhotos];
 }
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -81,6 +143,7 @@
   return self.result.count;
 }
 - (IBAction)buttonCancelDidPressed:(id)sender {
+  [self correctColor:0.0];
   [self dismissViewControllerAnimated:true completion:^{
     
   }];
@@ -90,5 +153,20 @@
   double  newWidth = sizeView.width / 5;
   double newHeight = sizeView.height / 2;
   return CGSizeMake(newWidth, newHeight);
+}
+-(void)calculatedAndHightLightView{
+  double frameValue = self.mainViewHolder.frame.origin.y ;
+  double screenMAxValue = self.backGroundView.frame.size.height;
+  double percentage = (screenMAxValue - frameValue )/screenMAxValue;
+   NSLog(@"value %f and %f", percentage,screenMAxValue);
+  [self correctColor:percentage];
+}
+-(void)correctColor:(double)percentage{
+  double formattedPercentage = fabs(percentage);
+  if(formattedPercentage >= 0.6){
+    formattedPercentage = 0.6;
+  }
+  UIColor *backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:formattedPercentage];
+  self.view.backgroundColor = backgroundColor;
 }
 @end

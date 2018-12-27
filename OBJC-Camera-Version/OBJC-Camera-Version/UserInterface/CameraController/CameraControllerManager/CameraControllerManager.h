@@ -12,6 +12,8 @@
 #import <Photos/Photos.h>
 #import <ReactiveObjC.h>
 #import "Const.h"
+#import "CameraControllerViewModel.h"
+#import "AppAVCaptureSession.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CameraControllerManager : NSObject<AVCapturePhotoCaptureDelegate,AVCaptureFileOutputRecordingDelegate>
@@ -25,6 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)changeFlashMode;
 -(void)setMode:(CameraModeType)type;
 -(NSString*)recoredTime;
+-(BOOL)isValidSession;
+- (void)setUpDefaultCamera;
 @end
 
 NS_ASSUME_NONNULL_END

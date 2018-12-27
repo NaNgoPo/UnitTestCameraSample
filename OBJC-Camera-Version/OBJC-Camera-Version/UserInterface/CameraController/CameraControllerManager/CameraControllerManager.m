@@ -5,20 +5,17 @@
 //  Created by East Agile on 12/24/18.
 //  Copyright © 2018 East Agile. All rights reserved.
 //
-
 #import "CameraControllerManager.h"
-
-
 
 @interface CameraControllerManager ()
 @property (nonatomic) AVCaptureSession *capturesSession;
 @property (nonatomic) AVCapturePhotoOutput *stillImageOutput;
 @property (nonatomic) AVCaptureMovieFileOutput *videoOutput;
+@property (nonatomic) AVCaptureDeviceInput *input;
 @property (nonatomic) AVCaptureVideoPreviewLayer *videoPreviewLayer;
 @property (nonatomic) CameraModeType myCurrentMode;
-//setting
 @property (nonatomic) AVCapturePhotoSettings *photoSetting;
-
+@property (nonatomic) CameraControllerViewModel *viewModel;
 @end
 
 @implementation CameraControllerManager
@@ -33,14 +30,21 @@
     self.photoSetting = [AVCapturePhotoSettings new];
     self.eventCameraController = [RACSubject subject];
     self.eventLogger =  [RACSubject subject];
+    self.viewModel = [CameraControllerViewModel new];
     self.myCurrentMode = kCameraModePhoto; // set default is photo mode
-    
-    [self createInitialCamera:AVCaptureDevicePositionBack withMode:self.myCurrentMode];
-
+   
   }
   return self;
 }
+- (instancetype)initWithCaptureSession:(AVCaptureSession *)captureSession{
+  self = [self init];
+  self.capturesSession = captureSession;// inject the capture session
+  return self;
+}
 #pragma mark - Setup Camera Preview
+- (void)setUpDefaultCamera{
+   [self createInitialCamera:AVCaptureDevicePositionBack withMode:self.myCurrentMode];
+}
 - (void)createInitialCamera:(AVCaptureDevicePosition) position{
   [self createInitialCamera:position withMode:self.myCurrentMode];// take the same setting input output of camera
 }
@@ -52,8 +56,10 @@
     return;
   }
   NSError *error;
-  AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:cameraDevice
+  if(self.input == nil){
+  self.input = [AVCaptureDeviceInput deviceInputWithDevice:cameraDevice
                                                                       error:&error];
+  }
   
   if (!error) {
     NSLog(@"Error:%@",error.localizedDescription);
@@ -63,9 +69,9 @@
   self.videoOutput = [AVCaptureMovieFileOutput new];
   [self clearCapture];
   if(mode == kCameraModePhoto){
-    [self buildCapturePicture:input andOutput:self.stillImageOutput];
+    [self buildCapturePicture:self.input andOutput:self.stillImageOutput];
   }else{
-    [self buildCameraRecord:input andOutput:self.videoOutput];
+    [self buildCameraRecord:self.input andOutput:self.videoOutput];
   }
   [self.capturesSession startRunning];
 }
@@ -175,13 +181,13 @@
 }
 -(NSString*)recoredTime{
   int sec = 0;
-  if(self.videoOutput.isRecording){ // only reload the info if running
+  if(self.videoOutput.isRecording){// only reload the info if running
     sec = (int)CMTimeGetSeconds(self.videoOutput.recordedDuration);
   }
   return [NSString stringWithFormat:@"00:00:%.2d",sec];
 }
 -(void)switchCameraFrontBack{
-  if(self.capturesSession.inputs.count < 1 ){
+  if(![self isValidSession]){
     return;
   }
   AVCaptureInput *currentDevideInput = [self.capturesSession.inputs objectAtIndex:0];
@@ -194,28 +200,24 @@
   }
   return;
 }
+-(BOOL)isValidSession{
+  return (self.capturesSession.inputs.count > 0);
+}
 -(void)setMode:(CameraModeType)type{
-  self.myCurrentMode = type;
-  [self createInitialCamera:AVCaptureDevicePositionBack];
+ // dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    self.myCurrentMode = type;
+    [self createInitialCamera:AVCaptureDevicePositionBack];
+  //});
 }
 #pragma mark - Camera private function
 - (void)captureOutput:(AVCapturePhotoOutput *)output didFinishProcessingPhoto:(AVCapturePhoto *)photo error:(NSError *)error{
-  [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
-    if(status != PHAuthorizationStatusAuthorized){
-      return;
-    }
-    [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
-      PHAssetCreationRequest *requestImage = [PHAssetCreationRequest creationRequestForAsset];
-      [requestImage addResourceWithType:PHAssetResourceTypePhoto data:photo.fileDataRepresentation options:nil];
-    } completionHandler:^(BOOL success, NSError * _Nullable error) {
-      NSLog(@"completion %@",error.localizedDescription);
-    }];
-  }];
+  [self.viewModel saveAsset:photo];
+  [self.eventLogger sendNext:@"Image saved to PHOTOS"];
 }
 -(void)captureOutput:(AVCaptureFileOutput *)captureOutput didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL fromConnections:(NSArray *)connections error:(NSError *)error
 {
   NSLog(@"captured video");
-  UISaveVideoAtPathToSavedPhotosAlbum(outputFileURL.path, nil, nil, nil);
+  [self.viewModel saveAsset:outputFileURL];
   [self.eventLogger sendNext:@"Video saved to PHOTOS"];
 }
 @end
