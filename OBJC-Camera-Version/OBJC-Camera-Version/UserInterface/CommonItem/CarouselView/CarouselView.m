@@ -21,8 +21,14 @@ const int TAG_VIEW = 10;
   // Do any additional setup after loading the view from its nib.
 }
 
--(void)changeDisplay:(PHFetchResult<PHAsset *> *)assets fromInfo:(NSMutableArray *)selectedList{
+- (void)changeDisplay:( PHFetchResult<PHAsset *> * _Nullable)assets fromInfo:(NSMutableArray *)selectedList{
   [self.listOfAsset removeAllObjects];
+  if(!assets){
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+      [self.carouselMain reloadData];
+    });
+    return;
+  }
   for (int i = 0; i<selectedList.count; i++) {
     if([selectedList[i] integerValue] != INVALID_VALUE){
       PHAsset * value = [assets objectAtIndex:[selectedList[i] integerValue]];

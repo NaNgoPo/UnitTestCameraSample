@@ -57,7 +57,6 @@ const double MAX_VAL = 0.6;
       [self.mainCollectionUpdate reloadItemsAtIndexPaths:visibleCells];
       [self setTextFotCountLabel];
       NSMutableArray * selectedItems = [NSMutableArray new];
-      
       [self.carousel changeDisplay:self.result fromInfo:self.selectedList];
     });
   }];
@@ -103,7 +102,7 @@ const double MAX_VAL = 0.6;
     } else {
       finalY = PADDING_FRAME;
       [UIView animateWithDuration:0.2 animations:^{
-         [sender.view setCenter:CGPointMake(sender.view.center.x,  self.backGroundView.frame.size.height / 2.0 + finalY)];
+        [sender.view setCenter:CGPointMake(sender.view.center.x,  self.backGroundView.frame.size.height / 2.0 + finalY)];
       }];
     }
   }
@@ -111,9 +110,7 @@ const double MAX_VAL = 0.6;
 }
 - (void)viewDidLayoutSubviews{
   self.carousel.view.frame = CGRectMake(0, 0, self.carouselHolder.frame.size.width, self.carouselHolder.frame.size.height);
- 
   self.constraitHeight.constant = self.backGroundView.frame.size.height - PADDING_FRAME;
-  
 }
 -(void)setTextFotCountLabel{
   int validSlotCouting = [self.controller getCountValidItem];
@@ -160,7 +157,6 @@ const double MAX_VAL = 0.6;
     [self listenChangingAlbum:galleryView.eventChoosenGallery];
   }
 }
-
 #pragma mar - Util methods
 - (void)listenChangingAlbum:(RACSubject *)event{
   @weakify(self);
@@ -170,6 +166,8 @@ const double MAX_VAL = 0.6;
       PHAssetCollection *concreteAlbum = (PHAssetCollection *)album;
       [self.controller getAllItemInsideAlbum:album];
       [self.buttonChooseGallery setTitle:concreteAlbum.localizedTitle forState:(UIControlStateNormal)];
+//       [self.carousel changeDisplay:nil fromInfo:self.selectedList];
+      [self.controller clearState];
     }
   }];
 }
@@ -183,7 +181,7 @@ const double MAX_VAL = 0.6;
   double frameValue = self.mainViewHolder.frame.origin.y ;
   double screenMAxValue = self.backGroundView.frame.size.height;
   double percentage = (screenMAxValue - frameValue )/screenMAxValue;
-   NSLog(@"value %f and %f", percentage,screenMAxValue);
+  NSLog(@"value %f and %f", percentage,screenMAxValue);
   [self correctColor:percentage];
 }
 -(void)correctColor:(double)percentage{
@@ -194,6 +192,4 @@ const double MAX_VAL = 0.6;
   UIColor *backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:formattedPercentage];
   self.view.backgroundColor = backgroundColor;
 }
-
-
 @end

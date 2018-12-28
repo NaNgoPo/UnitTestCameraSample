@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)isSelectedItemAt:(int)index;
 - (int)getCountValidItem;
 - (void)getAllItemInsideAlbum:(PHAssetCollection *)album;
+- (void)clearState;
 @end
 
 NS_ASSUME_NONNULL_END

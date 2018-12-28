@@ -11,7 +11,10 @@
 @property (nonatomic) AVCaptureSession *capturesSession;
 @property (nonatomic) AVCapturePhotoOutput *stillImageOutput;
 @property (nonatomic) AVCaptureMovieFileOutput *videoOutput;
-@property (nonatomic) AVCaptureDeviceInput *input;
+@property (nonatomic) AVCaptureDeviceInput *inputBack;
+@property (nonatomic) AVCaptureDevice *cameraDeviceBack;
+@property (nonatomic) AVCaptureDevice *cameraDeviceFront;
+@property (nonatomic) AVCaptureDeviceInput *inputFront;
 @property (nonatomic) AVCaptureVideoPreviewLayer *videoPreviewLayer;
 @property (nonatomic) CameraModeType myCurrentMode;
 @property (nonatomic) AVCapturePhotoSettings *photoSetting;
@@ -32,7 +35,6 @@
     self.eventLogger =  [RACSubject subject];
     self.viewModel = [CameraControllerViewModel new];
     self.myCurrentMode = kCameraModePhoto; // set default is photo mode
-    
   }
   return self;
 }
@@ -42,24 +44,30 @@
   return self;
 }
 #pragma mark - Setup Camera Preview
-- (void)setUpDefaultCamera{
-  [self createInitialCamera:AVCaptureDevicePositionBack withMode:self.myCurrentMode];
-}
 - (void)createInitialCamera:(AVCaptureDevicePosition) position{
   [self createInitialCamera:position withMode:self.myCurrentMode];// take the same setting input output of camera
 }
 - (void)createInitialCamera:(AVCaptureDevicePosition) position withMode:(CameraModeType)mode{
   self.photoSetting.flashMode = AVCaptureFlashModeAuto;
-  AVCaptureDevice *cameraDevice = [self cameraWithPosition:position];
-  if (!cameraDevice) {
+  //  AVCaptureDevice *cameraDevice = [self cameraWithPosition:position];
+  
+  if( self.cameraDeviceBack == nil){
+    self.cameraDeviceBack = [self cameraWithPosition:AVCaptureDevicePositionBack];
+  }
+  if( self.cameraDeviceFront == nil){
+    self.cameraDeviceFront = [self cameraWithPosition:AVCaptureDevicePositionFront];
+  }
+  if (!self.cameraDeviceBack || !self.cameraDeviceFront) {
     NSLog(@"Unable to access camera!");
     return;
   }
   NSError *error;
-  if(self.input == nil){
-    self.input = [AVCaptureDeviceInput deviceInputWithDevice:cameraDevice error:&error];
+  if(self.inputBack == nil){
+    self.inputBack = [AVCaptureDeviceInput deviceInputWithDevice:self.cameraDeviceBack error:&error];
   }
-  
+  if(self.inputFront == nil){
+    self.inputFront = [AVCaptureDeviceInput deviceInputWithDevice:self.cameraDeviceFront error:&error];
+  }
   if (!error) {
     NSLog(@"Error:%@",error.localizedDescription);
   }
@@ -67,26 +75,27 @@
   self.stillImageOutput = [AVCapturePhotoOutput new];
   self.videoOutput = [AVCaptureMovieFileOutput new];
   [self clearCapture];
+  AVCaptureDeviceInput *inputVal = (position == AVCaptureDevicePositionFront)?self.inputFront:self.inputBack;
   if(mode == kCameraModePhoto){
-    [self buildCapturePicture:self.input andOutput:self.stillImageOutput];
+    [self buildCapturePicture:inputVal andOutput:self.stillImageOutput];
   }else{
-    [self buildCameraRecord:self.input andOutput:self.videoOutput];
+    [self buildCameraRecord:inputVal andOutput:self.videoOutput];
   }
   [self.capturesSession startRunning];
 }
--(void)buildCapturePicture:(AVCaptureDeviceInput *)input andOutput:(AVCapturePhotoOutput *)output{
+- (void)buildCapturePicture:(AVCaptureDeviceInput *)input andOutput:(AVCapturePhotoOutput *)output{
   if ([self.capturesSession canAddInput:input] && [self.capturesSession canAddOutput:output]) {
     [self.capturesSession addInput:input];
     [self.capturesSession addOutput:output];
   }
 }
--(void)buildCameraRecord:(AVCaptureDeviceInput *)input andOutput:(AVCaptureMovieFileOutput *)output{
+- (void)buildCameraRecord:(AVCaptureDeviceInput *)input andOutput:(AVCaptureMovieFileOutput *)output{
   if ([self.capturesSession canAddInput:input] && [self.capturesSession canAddOutput:output]) {
     [self.capturesSession addInput:input];
     [self.capturesSession addOutput:output];
   }
 }
--(void)clearCapture{
+- (void)clearCapture{
   if(self.capturesSession == nil){
     return;
   }
@@ -107,7 +116,7 @@
     [self ajustingLayout:viewDisplay];
   }
 }
--(void)ajustingLayout:(UIView *)viewDisplay {
+- (void)ajustingLayout:(UIView *)viewDisplay {
   dispatch_async(dispatch_get_main_queue(), ^{
     self.videoPreviewLayer.frame = CGRectMake(0, 0, viewDisplay.frame.size.width, viewDisplay.frame.size.height);
   });
@@ -126,7 +135,7 @@
   return nil;
 }
 #pragma mark - Camera public interface function
--(void)changeFlashMode{
+- (void)changeFlashMode{
   //  Change the camera mode to the next, in loop
   switch (self.photoSetting.flashMode) {
     case AVCaptureFlashModeOn:
@@ -146,14 +155,14 @@
   }
   [self.eventCameraController sendNext:[NSNumber numberWithInt:self.photoSetting.flashMode]];
 }
--(void)actionProcess{
+- (void)actionProcess{
   if(self.myCurrentMode == kCameraModePhoto){
     [self capturePicture];
   }else{
     [self excuteVideoRecord];
   }
 }
--(void)excuteVideoRecord{
+- (void)excuteVideoRecord{
   if((self.videoOutput == nil) || (self.videoOutput.connections.count < 1)){
     [self.eventLogger sendNext:@"Oop error occured!"];
     return;
@@ -168,7 +177,7 @@
     
   }
 }
--(void)capturePicture{
+- (void)capturePicture{
   if(self.stillImageOutput == nil){
     return;
   }
@@ -178,18 +187,18 @@
     [self.stillImageOutput capturePhotoWithSettings:captureSetting delegate:self];
   }
 }
--(NSString*)recoredTime{
+- (NSString*)recoredTime{
   int sec = 0;
   if(self.videoOutput.isRecording){// only reload the info if running
     sec = (int)CMTimeGetSeconds(self.videoOutput.recordedDuration);
   }
   return [NSString stringWithFormat:@"00:00:%.2d",sec];
 }
--(void)switchCameraFrontBack{
+- (void)switchCameraFrontBack{
   if(![self isValidSession]){
     return;
   }
-  AVCaptureInput *currentDevideInput = [self.capturesSession.inputs objectAtIndex:0];
+  AVCaptureInput *currentDevideInput = [self.capturesSession.inputs firstObject];
   if(currentDevideInput != nil){
     if(((AVCaptureDeviceInput*)currentDevideInput).device.position == AVCaptureDevicePositionBack){
       [self createInitialCamera:AVCaptureDevicePositionFront];
@@ -199,10 +208,10 @@
   }
   return;
 }
--(BOOL)isValidSession{
+- (BOOL)isValidSession{
   return (self.capturesSession.inputs.count > 0);
 }
--(void)setMode:(CameraModeType)type{
+- (void)setMode:(CameraModeType)type{
   self.myCurrentMode = type;
   [self createInitialCamera:AVCaptureDevicePositionBack];
 }
@@ -211,7 +220,7 @@
   [self.viewModel saveAsset:photo];
   [self.eventLogger sendNext:@"Image saved to PHOTOS"];
 }
--(void)captureOutput:(AVCaptureFileOutput *)captureOutput didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL fromConnections:(NSArray *)connections error:(NSError *)error
+- (void)captureOutput:(AVCaptureFileOutput *)captureOutput didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL fromConnections:(NSArray *)connections error:(NSError *)error
 {
   NSLog(@"captured video");
   [self.viewModel saveAsset:outputFileURL];

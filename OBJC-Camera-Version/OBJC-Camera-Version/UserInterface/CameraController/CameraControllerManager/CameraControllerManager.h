@@ -20,15 +20,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readwrite) RACSubject *eventCameraController;
 @property (nonatomic, strong, readwrite) RACSubject *eventLogger;
 //Create View and add to tje viewDisplay
--(void)setupLivePreview:(UIView *)viewDisplay;
--(void)ajustingLayout:(UIView *)viewDisplay;
--(void)switchCameraFrontBack;
--(void)actionProcess;
--(void)changeFlashMode;
--(void)setMode:(CameraModeType)type;
--(NSString*)recoredTime;
--(BOOL)isValidSession;
-- (void)setUpDefaultCamera;
+- (void)setupLivePreview:(UIView *)viewDisplay;
+- (void)ajustingLayout:(UIView *)viewDisplay;
+- (void)switchCameraFrontBack;
+- (void)actionProcess;
+- (void)changeFlashMode;
+- (void)setMode:(CameraModeType)type;
+- (NSString*)recoredTime;
+- (BOOL)isValidSession;
 @end
 
 NS_ASSUME_NONNULL_END

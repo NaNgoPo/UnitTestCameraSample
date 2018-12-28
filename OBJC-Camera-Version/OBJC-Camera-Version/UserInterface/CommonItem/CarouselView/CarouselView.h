@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CarouselView : UIViewController<iCarouselDelegate,iCarouselDataSource>
 @property (strong, nonatomic) NSMutableArray<PHAsset *> *listOfAsset;
--(void)changeDisplay:(PHFetchResult<PHAsset *> *)assets fromInfo:(NSMutableArray *)selectedList;
+- (void)changeDisplay:( PHFetchResult<PHAsset *> * _Nullable)assets fromInfo:(NSMutableArray *)selectedList;
 @end
 
 NS_ASSUME_NONNULL_END

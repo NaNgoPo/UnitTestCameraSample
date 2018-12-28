@@ -24,7 +24,6 @@
 @end
 
 @implementation CameraController
-
 - (void)viewDidLoad {
   [super viewDidLoad];
   self.cameraManager = [CameraControllerManager new];
@@ -99,6 +98,7 @@
   self.holeView.frame = CGRectMake(0, 0, self.focusView.frame.size.width, self.focusView.frame.size.height);
   self.focusViewRect.frame = CGRectMake(0, 0, self.focusView.frame.size.width, self.focusView.frame.size.height);
 }
+#pragma mark - need UI testing here
 - (IBAction)requestChangeCamera:(id)sender {
   [self.cameraManager switchCameraFrontBack];
 }

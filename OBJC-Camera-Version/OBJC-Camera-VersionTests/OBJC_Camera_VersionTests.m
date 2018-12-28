@@ -18,14 +18,14 @@
 @implementation OBJC_Camera_VersionTests
 
 - (void)setUp {
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+  // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
+  // Put teardown code here. This method is called after the invocation of each test method in the class.
 }
 
-- (void)testCameraControllerFrontBack {
+- (void)testCameraControllerFrontBackWithValidSession {
   CameraController *viewController = [CameraController new];
   
   CameraControllerManager *controllerObj = [CameraControllerManager new];
@@ -33,17 +33,27 @@
   
   AVCaptureSession *captureSession = [AVCaptureSession new];
   AVCaptureSession *captureSessionMock = OCMPartialMock(captureSession);
-//  OCMStub([captureSessionMock ])
   OCMStub([controllerMock isValidSession]).andReturn(true);
   viewController.cameraManager = controllerMock;// inject the value
   [viewController.cameraManager switchCameraFrontBack];// try to call switch camera
 }
-
+- (void)testCameraControllerFrontBackWithinValidSession{
+  CameraController *viewController = [CameraController new];
+  
+  CameraControllerManager *controllerObj = [CameraControllerManager new];
+  CameraControllerManager *controllerMock = OCMPartialMock(controllerObj);
+  
+  AVCaptureSession *captureSession = [AVCaptureSession new];
+  AVCaptureSession *captureSessionMock = OCMPartialMock(captureSession);
+  OCMStub([controllerMock isValidSession]).andReturn(false);
+  viewController.cameraManager = controllerMock;// inject the value
+  [viewController.cameraManager switchCameraFrontBack];// try to call switch camera
+}
 - (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+  // This is an example of a performance test case.
+  [self measureBlock:^{
+    // Put the code you want to measure the time of here.
+  }];
 }
 
 @end
