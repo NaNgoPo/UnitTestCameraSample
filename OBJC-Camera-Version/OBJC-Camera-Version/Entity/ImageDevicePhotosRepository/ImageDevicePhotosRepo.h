@@ -13,9 +13,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ImageDevicePhotosRepo : NSObject
 @property (nonatomic, strong, readwrite) RACSubject *eventDevicePhotos;
--(void)getAllItemInPhotosDevice;
--(void)getAllAlbumInDevice;
--(void)saveAssetToPhotos;
+@property (nonatomic, strong, readwrite) RACSubject *eventGalleryManage;
+- (void)getAllItemInPhotosDevice;
+- (void)getAllItemInsideAlbum:(PHCollection *)album;
+- (void)getAllAlbumInDevice;
+- (void)saveAssetToPhotos;
 @end
 
 NS_ASSUME_NONNULL_END

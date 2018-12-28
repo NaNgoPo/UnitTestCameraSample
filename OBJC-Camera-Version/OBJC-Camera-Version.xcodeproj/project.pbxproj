@@ -38,6 +38,10 @@
 		97F327DC21D3718B0064C148 /* BorderFocusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F327DB21D3718B0064C148 /* BorderFocusView.m */; };
 		97F327E021D47D7A0064C148 /* CameraControllerViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F327DF21D47D7A0064C148 /* CameraControllerViewModel.m */; };
 		97F327E421D48F3D0064C148 /* AppAVCaptureSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F327E321D48F3D0064C148 /* AppAVCaptureSession.m */; };
+		97F327E821D5D9810064C148 /* GalleryChoosenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F327E721D5D9810064C148 /* GalleryChoosenView.m */; };
+		97F327ED21D5E0990064C148 /* GAlleryChoosen.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F327EB21D5E0990064C148 /* GAlleryChoosen.m */; };
+		97F327EE21D5E0990064C148 /* GAlleryChoosen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97F327EC21D5E0990064C148 /* GAlleryChoosen.xib */; };
+		97F327F221D5E4DB0064C148 /* GalleryChoosenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F327F121D5E4DB0064C148 /* GalleryChoosenController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +118,13 @@
 		97F327DF21D47D7A0064C148 /* CameraControllerViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraControllerViewModel.m; sourceTree = "<group>"; };
 		97F327E221D48F3D0064C148 /* AppAVCaptureSession.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppAVCaptureSession.h; sourceTree = "<group>"; };
 		97F327E321D48F3D0064C148 /* AppAVCaptureSession.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppAVCaptureSession.m; sourceTree = "<group>"; };
+		97F327E621D5D9810064C148 /* GalleryChoosenView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GalleryChoosenView.h; sourceTree = "<group>"; };
+		97F327E721D5D9810064C148 /* GalleryChoosenView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GalleryChoosenView.m; sourceTree = "<group>"; };
+		97F327EA21D5E0990064C148 /* GAlleryChoosen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAlleryChoosen.h; sourceTree = "<group>"; };
+		97F327EB21D5E0990064C148 /* GAlleryChoosen.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GAlleryChoosen.m; sourceTree = "<group>"; };
+		97F327EC21D5E0990064C148 /* GAlleryChoosen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GAlleryChoosen.xib; sourceTree = "<group>"; };
+		97F327F021D5E4DB0064C148 /* GalleryChoosenController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GalleryChoosenController.h; sourceTree = "<group>"; };
+		97F327F121D5E4DB0064C148 /* GalleryChoosenController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GalleryChoosenController.m; sourceTree = "<group>"; };
 		BC04E0A648BED3D12BEB1967 /* Pods-OBJC-Camera-VersionUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OBJC-Camera-VersionUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OBJC-Camera-VersionUITests/Pods-OBJC-Camera-VersionUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F0E680E7F28D8462030E1F71 /* Pods-OBJC-Camera-Version.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OBJC-Camera-Version.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OBJC-Camera-Version/Pods-OBJC-Camera-Version.debug.xcconfig"; sourceTree = "<group>"; };
 		FDDC9A3017A2AA57BD074098 /* libPods-OBJC-Camera-Version.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OBJC-Camera-Version.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -221,6 +232,7 @@
 		9749AAE921D07CFC000CD9B1 /* UserInterface */ = {
 			isa = PBXGroup;
 			children = (
+				97F327E521D5D9590064C148 /* GalleryChoosenView */,
 				97F3279C21D0BB3F0064C148 /* CommonItem */,
 				9749AAF621D081B9000CD9B1 /* CameraController */,
 				9749AAEC21D07D99000CD9B1 /* UploadImageView */,
@@ -418,6 +430,36 @@
 			path = AppAVCaptureSession;
 			sourceTree = "<group>";
 		};
+		97F327E521D5D9590064C148 /* GalleryChoosenView */ = {
+			isa = PBXGroup;
+			children = (
+				97F327EF21D5E4B50064C148 /* GalleryChossenController */,
+				97F327E921D5E07B0064C148 /* GalleryCell */,
+				97F327E621D5D9810064C148 /* GalleryChoosenView.h */,
+				97F327E721D5D9810064C148 /* GalleryChoosenView.m */,
+			);
+			path = GalleryChoosenView;
+			sourceTree = "<group>";
+		};
+		97F327E921D5E07B0064C148 /* GalleryCell */ = {
+			isa = PBXGroup;
+			children = (
+				97F327EA21D5E0990064C148 /* GAlleryChoosen.h */,
+				97F327EB21D5E0990064C148 /* GAlleryChoosen.m */,
+				97F327EC21D5E0990064C148 /* GAlleryChoosen.xib */,
+			);
+			path = GalleryCell;
+			sourceTree = "<group>";
+		};
+		97F327EF21D5E4B50064C148 /* GalleryChossenController */ = {
+			isa = PBXGroup;
+			children = (
+				97F327F021D5E4DB0064C148 /* GalleryChoosenController.h */,
+				97F327F121D5E4DB0064C148 /* GalleryChoosenController.m */,
+			);
+			path = GalleryChossenController;
+			sourceTree = "<group>";
+		};
 		CCD0A94093260D551D24E0FB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -540,6 +582,7 @@
 				9749AAF521D07FE7000CD9B1 /* UploadingImageCell.xib in Resources */,
 				97F327B621D1E3280064C148 /* SwipeToChoose.xib in Resources */,
 				9749AAC121D07B19000CD9B1 /* Assets.xcassets in Resources */,
+				97F327EE21D5E0990064C148 /* GAlleryChoosen.xib in Resources */,
 				97F327A221D0BB660064C148 /* ButtonCameraController.xib in Resources */,
 				9749AABF21D07B18000CD9B1 /* Main.storyboard in Resources */,
 			);
@@ -641,6 +684,7 @@
 				9749AAEF21D07DB7000CD9B1 /* UploadImageViewController.m in Sources */,
 				9749AAC721D07B19000CD9B1 /* main.m in Sources */,
 				97F327C421D2158E0064C148 /* ImageDevicePhotosRepo.m in Sources */,
+				97F327ED21D5E0990064C148 /* GAlleryChoosen.m in Sources */,
 				97F327DC21D3718B0064C148 /* BorderFocusView.m in Sources */,
 				97F327A121D0BB660064C148 /* ButtonCameraController.m in Sources */,
 				97F327D221D33D870064C148 /* CarouselView.m in Sources */,
@@ -648,6 +692,8 @@
 				97F327C921D327220064C148 /* UploadingImageViewModel.m in Sources */,
 				9749AAFF21D083A1000CD9B1 /* CameraControllerManager.m in Sources */,
 				97F327E421D48F3D0064C148 /* AppAVCaptureSession.m in Sources */,
+				97F327F221D5E4DB0064C148 /* GalleryChoosenController.m in Sources */,
+				97F327E821D5D9810064C148 /* GalleryChoosenView.m in Sources */,
 				97F327BB21D1E36A0064C148 /* SwipeCell.m in Sources */,
 				97F327B521D1E3280064C148 /* SwipeToChoose.m in Sources */,
 				97F327D921D3680D0064C148 /* HoleView.m in Sources */,

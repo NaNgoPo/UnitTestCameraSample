@@ -14,10 +14,11 @@
   self = [super init];
   if (self) {
     self.eventDevicePhotos = [RACSubject new];
+    self.eventGalleryManage = [RACSubject new];
   }
   return self;
 }
--(void)getAllItemInPhotosDevice{
+- (void)getAllItemInPhotosDevice{
   [self requestAuthorize];// call the authorize
   PHFetchOptions *options = [PHFetchOptions new];
   NSArray *arrayDescriptor = [NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:true],nil];
@@ -26,22 +27,34 @@
   PHFetchResult<PHAsset *> *imagesAndVideos =[PHAsset fetchAssetsWithOptions:options];
   [self.eventDevicePhotos sendNext:imagesAndVideos];
 }
--(void)requestAuthorize{
+- (void)requestAuthorize{
   [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
     
   }];
 }
--(void)getAllAlbumInDevice{
+- (void)getAllAlbumInDevice{
   [self requestAuthorize];// call the authorize
   PHFetchResult<PHCollection *> *result = [PHCollectionList fetchTopLevelUserCollectionsWithOptions:nil];
   PHFetchResult<PHAssetCollection *> *resultColection = [PHAssetCollection fetchAssetCollectionsWithType:(PHAssetCollectionTypeSmartAlbum) subtype:(PHAssetCollectionSubtypeAny) options:nil];
+  NSMutableArray<PHCollection *> *assetList = [NSMutableArray new];
   for (int i=0; i<result.count; i++) {
     PHCollection *collection = [result objectAtIndex:i];
     NSLog(@"PHCollection %@",collection.localizedTitle);
+    
+    [assetList addObject:collection];
   }
   for (int i=0; i<resultColection.count; i++) {
     PHAssetCollection *collection = [resultColection objectAtIndex:i];
-    NSLog(@"PHAssetCollection %@",collection.localizedTitle);
+    PHAsset *firstAsset = [PHAsset fetchAssetsInAssetCollection:collection options:nil].firstObject;
+    if(firstAsset != nil){
+      [assetList addObject:collection];
+    }
   }
+  [self.eventGalleryManage sendNext:assetList];
+}
+- (void)getAllItemInsideAlbum:(PHCollection *)album{
+  [self requestAuthorize];// call the authorize
+  PHFetchResult<PHAsset *> *imagesAndVideos = [PHAsset fetchAssetsInAssetCollection:album options:nil];
+  [self.eventDevicePhotos sendNext:imagesAndVideos];
 }
 @end

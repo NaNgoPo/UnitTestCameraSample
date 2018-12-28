@@ -20,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UIView *indicatedView;
 @property (weak, nonatomic) IBOutlet UIView *mainViewHolder;
 @property (weak, nonatomic) IBOutlet UIView *backGroundView;
+@property (weak, nonatomic) IBOutlet UIButton *buttonChooseGallery;
+
 @property (strong,nonatomic) CarouselView *carousel;
 @property (assign,nonatomic) double firstX;
 @property (assign,nonatomic) double firstY;
@@ -148,13 +150,36 @@ const double MAX_VAL = 0.6;
     
   }];
 }
--(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+- (IBAction)buttonChooseGalleryDidPressed:(id)sender {
+  [self performSegueWithIdentifier:@"showGallery" sender:self];
+}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+  if([segue.identifier isEqualToString:@"showGallery"]){
+    GalleryChoosenView *galleryView = (GalleryChoosenView *)[segue destinationViewController];
+    galleryView.eventChoosenGallery = [RACSubject new];
+    [self listenChangingAlbum:galleryView.eventChoosenGallery];
+  }
+}
+
+#pragma mar - Util methods
+- (void)listenChangingAlbum:(RACSubject *)event{
+  @weakify(self);
+  [event subscribeNext:^(id  _Nullable album) {
+    @strongify(self);
+    if([album isKindOfClass:[PHAssetCollection class]]){
+      PHAssetCollection *concreteAlbum = (PHAssetCollection *)album;
+      [self.controller getAllItemInsideAlbum:album];
+      [self.buttonChooseGallery setTitle:concreteAlbum.localizedTitle forState:(UIControlStateNormal)];
+    }
+  }];
+}
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
   CGSize sizeView = collectionView.frame.size;
   double  newWidth = sizeView.width / 5;
   double newHeight = sizeView.height / 2;
   return CGSizeMake(newWidth, newHeight);
 }
--(void)calculatedAndHightLightView{
+- (void)calculatedAndHightLightView{
   double frameValue = self.mainViewHolder.frame.origin.y ;
   double screenMAxValue = self.backGroundView.frame.size.height;
   double percentage = (screenMAxValue - frameValue )/screenMAxValue;
@@ -169,4 +194,6 @@ const double MAX_VAL = 0.6;
   UIColor *backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:formattedPercentage];
   self.view.backgroundColor = backgroundColor;
 }
+
+
 @end

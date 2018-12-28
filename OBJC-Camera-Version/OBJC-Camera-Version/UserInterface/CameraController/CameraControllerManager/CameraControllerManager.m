@@ -32,7 +32,7 @@
     self.eventLogger =  [RACSubject subject];
     self.viewModel = [CameraControllerViewModel new];
     self.myCurrentMode = kCameraModePhoto; // set default is photo mode
-   
+    
   }
   return self;
 }
@@ -43,7 +43,7 @@
 }
 #pragma mark - Setup Camera Preview
 - (void)setUpDefaultCamera{
-   [self createInitialCamera:AVCaptureDevicePositionBack withMode:self.myCurrentMode];
+  [self createInitialCamera:AVCaptureDevicePositionBack withMode:self.myCurrentMode];
 }
 - (void)createInitialCamera:(AVCaptureDevicePosition) position{
   [self createInitialCamera:position withMode:self.myCurrentMode];// take the same setting input output of camera
@@ -57,8 +57,7 @@
   }
   NSError *error;
   if(self.input == nil){
-  self.input = [AVCaptureDeviceInput deviceInputWithDevice:cameraDevice
-                                                                      error:&error];
+    self.input = [AVCaptureDeviceInput deviceInputWithDevice:cameraDevice error:&error];
   }
   
   if (!error) {
@@ -204,10 +203,8 @@
   return (self.capturesSession.inputs.count > 0);
 }
 -(void)setMode:(CameraModeType)type{
- // dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-    self.myCurrentMode = type;
-    [self createInitialCamera:AVCaptureDevicePositionBack];
-  //});
+  self.myCurrentMode = type;
+  [self createInitialCamera:AVCaptureDevicePositionBack];
 }
 #pragma mark - Camera private function
 - (void)captureOutput:(AVCapturePhotoOutput *)output didFinishProcessingPhoto:(AVCapturePhoto *)photo error:(NSError *)error{

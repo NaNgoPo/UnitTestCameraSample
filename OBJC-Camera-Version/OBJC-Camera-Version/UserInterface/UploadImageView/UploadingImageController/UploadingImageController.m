@@ -37,9 +37,10 @@
 }
 -(void)getAllItemInDevicePhotos{
   [self.imageRepository getAllItemInPhotosDevice];
-  [self.imageRepository getAllAlbumInDevice];
 }
-
+- (void)getAllItemInsideAlbum:(PHAssetCollection *)album{
+  [self.imageRepository getAllItemInsideAlbum:album];
+}
 -(void)selectAssetAtIndex:(int)index andList:(PHFetchResult<PHAsset *> *)assetList{
   int foundedIndex = [self.viewModel firstIndexOfValue:index inArray:self.itemList];
   if(foundedIndex == INVALID_VALUE){ // the value is not inside the set, so need to add it

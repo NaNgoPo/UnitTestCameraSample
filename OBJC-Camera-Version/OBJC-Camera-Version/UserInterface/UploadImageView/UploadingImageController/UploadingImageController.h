@@ -10,6 +10,7 @@
 #import <ReactiveObjC.h>
 #import "ImageDevicePhotosRepo.h"
 #import "UploadingImageViewModel.h"
+#import <Photos/Photos.h>
 #import "Const.h"
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,10 +18,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readwrite) RACSubject *eventLoadImage;
 @property (nonatomic, strong, readwrite) RACSubject *eventPickImage;
 @property (nonatomic, strong, readwrite) RACSubject *eventSelected;
--(void)getAllItemInDevicePhotos;
--(void)selectAssetAtIndex:(int)index andList:(PHFetchResult<PHAsset *> *)assetList;
--(BOOL)isSelectedItemAt:(int)index;
--(int)getCountValidItem;
+- (void)getAllItemInDevicePhotos;
+- (void)selectAssetAtIndex:(int)index andList:(PHFetchResult<PHAsset *> *)assetList;
+- (BOOL)isSelectedItemAt:(int)index;
+- (int)getCountValidItem;
+- (void)getAllItemInsideAlbum:(PHAssetCollection *)album;
 @end
 
 NS_ASSUME_NONNULL_END
