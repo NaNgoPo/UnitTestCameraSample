@@ -220,8 +220,7 @@
   [self.viewModel saveAsset:photo];
   [self.eventLogger sendNext:@"Image saved to PHOTOS"];
 }
-- (void)captureOutput:(AVCaptureFileOutput *)captureOutput didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL fromConnections:(NSArray *)connections error:(NSError *)error
-{
+- (void)captureOutput:(AVCaptureFileOutput *)captureOutput didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL fromConnections:(NSArray *)connections error:(NSError *)error{
   NSLog(@"captured video");
   [self.viewModel saveAsset:outputFileURL];
   [self.eventLogger sendNext:@"Video saved to PHOTOS"];

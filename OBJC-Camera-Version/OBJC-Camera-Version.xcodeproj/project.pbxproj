@@ -42,6 +42,11 @@
 		97F327ED21D5E0990064C148 /* GAlleryChoosen.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F327EB21D5E0990064C148 /* GAlleryChoosen.m */; };
 		97F327EE21D5E0990064C148 /* GAlleryChoosen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97F327EC21D5E0990064C148 /* GAlleryChoosen.xib */; };
 		97F327F221D5E4DB0064C148 /* GalleryChoosenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F327F121D5E4DB0064C148 /* GalleryChoosenController.m */; };
+		97F327F421DC75160064C148 /* TestUploadImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F327F321DC75120064C148 /* TestUploadImage.m */; };
+		97F3280621DC99800064C148 /* FocusViewBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F3280521DC99800064C148 /* FocusViewBase.m */; };
+		97F3280921DC998E0064C148 /* FocusViewWithLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F3280821DC998E0064C148 /* FocusViewWithLayer.m */; };
+		97F3280D21DC99A50064C148 /* FocusViewWithImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F3280C21DC99A50064C148 /* FocusViewWithImage.m */; };
+		97F3281021DC9D660064C148 /* BackGroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F3280F21DC9D660064C148 /* BackGroundView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +130,15 @@
 		97F327EC21D5E0990064C148 /* GAlleryChoosen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GAlleryChoosen.xib; sourceTree = "<group>"; };
 		97F327F021D5E4DB0064C148 /* GalleryChoosenController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GalleryChoosenController.h; sourceTree = "<group>"; };
 		97F327F121D5E4DB0064C148 /* GalleryChoosenController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GalleryChoosenController.m; sourceTree = "<group>"; };
+		97F327F321DC75120064C148 /* TestUploadImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestUploadImage.m; sourceTree = "<group>"; };
+		97F3280421DC99800064C148 /* FocusViewBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FocusViewBase.h; sourceTree = "<group>"; };
+		97F3280521DC99800064C148 /* FocusViewBase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FocusViewBase.m; sourceTree = "<group>"; };
+		97F3280721DC998E0064C148 /* FocusViewWithLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FocusViewWithLayer.h; sourceTree = "<group>"; };
+		97F3280821DC998E0064C148 /* FocusViewWithLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FocusViewWithLayer.m; sourceTree = "<group>"; };
+		97F3280B21DC99A50064C148 /* FocusViewWithImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FocusViewWithImage.h; sourceTree = "<group>"; };
+		97F3280C21DC99A50064C148 /* FocusViewWithImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FocusViewWithImage.m; sourceTree = "<group>"; };
+		97F3280E21DC9D660064C148 /* BackGroundView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BackGroundView.h; sourceTree = "<group>"; };
+		97F3280F21DC9D660064C148 /* BackGroundView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BackGroundView.m; sourceTree = "<group>"; };
 		BC04E0A648BED3D12BEB1967 /* Pods-OBJC-Camera-VersionUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OBJC-Camera-VersionUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OBJC-Camera-VersionUITests/Pods-OBJC-Camera-VersionUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F0E680E7F28D8462030E1F71 /* Pods-OBJC-Camera-Version.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OBJC-Camera-Version.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OBJC-Camera-Version/Pods-OBJC-Camera-Version.debug.xcconfig"; sourceTree = "<group>"; };
 		FDDC9A3017A2AA57BD074098 /* libPods-OBJC-Camera-Version.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OBJC-Camera-Version.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -214,6 +228,7 @@
 		9749AACF21D07B19000CD9B1 /* OBJC-Camera-VersionTests */ = {
 			isa = PBXGroup;
 			children = (
+				97F327F321DC75120064C148 /* TestUploadImage.m */,
 				9749AAD021D07B19000CD9B1 /* OBJC_Camera_VersionTests.m */,
 				9749AAD221D07B19000CD9B1 /* Info.plist */,
 			);
@@ -388,6 +403,8 @@
 		97F327D421D367D30064C148 /* FocusView */ = {
 			isa = PBXGroup;
 			children = (
+				97F3280021DC993A0064C148 /* ViewWithLayer */,
+				97F327F521DC96D80064C148 /* BackgroundView */,
 				97F327D621D367E40064C148 /* BorderFocusView */,
 				97F327D521D367DB0064C148 /* HoleView */,
 			);
@@ -458,6 +475,52 @@
 				97F327F121D5E4DB0064C148 /* GalleryChoosenController.m */,
 			);
 			path = GalleryChossenController;
+			sourceTree = "<group>";
+		};
+		97F327F521DC96D80064C148 /* BackgroundView */ = {
+			isa = PBXGroup;
+			children = (
+				97F3280E21DC9D660064C148 /* BackGroundView.h */,
+				97F3280F21DC9D660064C148 /* BackGroundView.m */,
+			);
+			path = BackgroundView;
+			sourceTree = "<group>";
+		};
+		97F3280021DC993A0064C148 /* ViewWithLayer */ = {
+			isa = PBXGroup;
+			children = (
+				97F3280321DC99620064C148 /* FocusViewWithImage */,
+				97F3280221DC99510064C148 /* FocusViewWithLayer */,
+				97F3280121DC99450064C148 /* FocusViewBase */,
+			);
+			path = ViewWithLayer;
+			sourceTree = "<group>";
+		};
+		97F3280121DC99450064C148 /* FocusViewBase */ = {
+			isa = PBXGroup;
+			children = (
+				97F3280421DC99800064C148 /* FocusViewBase.h */,
+				97F3280521DC99800064C148 /* FocusViewBase.m */,
+			);
+			path = FocusViewBase;
+			sourceTree = "<group>";
+		};
+		97F3280221DC99510064C148 /* FocusViewWithLayer */ = {
+			isa = PBXGroup;
+			children = (
+				97F3280721DC998E0064C148 /* FocusViewWithLayer.h */,
+				97F3280821DC998E0064C148 /* FocusViewWithLayer.m */,
+			);
+			path = FocusViewWithLayer;
+			sourceTree = "<group>";
+		};
+		97F3280321DC99620064C148 /* FocusViewWithImage */ = {
+			isa = PBXGroup;
+			children = (
+				97F3280B21DC99A50064C148 /* FocusViewWithImage.h */,
+				97F3280C21DC99A50064C148 /* FocusViewWithImage.m */,
+			);
+			path = FocusViewWithImage;
 			sourceTree = "<group>";
 		};
 		CCD0A94093260D551D24E0FB /* Frameworks */ = {
@@ -679,6 +742,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				97F327CD21D329CD0064C148 /* Const.h in Sources */,
+				97F3280921DC998E0064C148 /* FocusViewWithLayer.m in Sources */,
+				97F3281021DC9D660064C148 /* BackGroundView.m in Sources */,
 				97F327E021D47D7A0064C148 /* CameraControllerViewModel.m in Sources */,
 				9749AAF421D07FE7000CD9B1 /* UploadingImageCell.m in Sources */,
 				9749AAEF21D07DB7000CD9B1 /* UploadImageViewController.m in Sources */,
@@ -686,6 +751,7 @@
 				97F327C421D2158E0064C148 /* ImageDevicePhotosRepo.m in Sources */,
 				97F327ED21D5E0990064C148 /* GAlleryChoosen.m in Sources */,
 				97F327DC21D3718B0064C148 /* BorderFocusView.m in Sources */,
+				97F3280D21DC99A50064C148 /* FocusViewWithImage.m in Sources */,
 				97F327A121D0BB660064C148 /* ButtonCameraController.m in Sources */,
 				97F327D221D33D870064C148 /* CarouselView.m in Sources */,
 				9749AAFA21D081DB000CD9B1 /* CameraController.m in Sources */,
@@ -698,6 +764,7 @@
 				97F327B521D1E3280064C148 /* SwipeToChoose.m in Sources */,
 				97F327D921D3680D0064C148 /* HoleView.m in Sources */,
 				9749AAB921D07B18000CD9B1 /* AppDelegate.m in Sources */,
+				97F3280621DC99800064C148 /* FocusViewBase.m in Sources */,
 				97F327C021D212680064C148 /* UploadingImageController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -706,6 +773,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97F327F421DC75160064C148 /* TestUploadImage.m in Sources */,
 				9749AAD121D07B19000CD9B1 /* OBJC_Camera_VersionTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

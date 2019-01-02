@@ -166,7 +166,6 @@ const double MAX_VAL = 0.6;
       PHAssetCollection *concreteAlbum = (PHAssetCollection *)album;
       [self.controller getAllItemInsideAlbum:album];
       [self.buttonChooseGallery setTitle:concreteAlbum.localizedTitle forState:(UIControlStateNormal)];
-//       [self.carousel changeDisplay:nil fromInfo:self.selectedList];
       [self.controller clearState];
     }
   }];
@@ -181,7 +180,6 @@ const double MAX_VAL = 0.6;
   double frameValue = self.mainViewHolder.frame.origin.y ;
   double screenMAxValue = self.backGroundView.frame.size.height;
   double percentage = (screenMAxValue - frameValue )/screenMAxValue;
-  NSLog(@"value %f and %f", percentage,screenMAxValue);
   [self correctColor:percentage];
 }
 -(void)correctColor:(double)percentage{

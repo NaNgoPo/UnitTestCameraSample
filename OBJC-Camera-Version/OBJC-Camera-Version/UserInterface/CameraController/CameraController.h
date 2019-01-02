@@ -13,6 +13,9 @@
 #import "Toast.h"
 #import "HoleView.h"
 #import "BorderFocusView.h"
+#import "FocusViewBase.h"
+#import "FocusViewWithLayer.h"
+#import "FocusViewWithImage.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CameraController : UIViewController<ButtonDelegate>

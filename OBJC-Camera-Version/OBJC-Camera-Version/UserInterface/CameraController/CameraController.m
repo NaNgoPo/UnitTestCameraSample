@@ -19,8 +19,12 @@
 @property (strong, nonatomic) SwipeToChoose *swipeToChooseView;
 //@property (nonatomic) CameraControllerManager *cameraManager;
 @property (nonatomic) ButtonCameraController *buttonCamera;
-@property (nonatomic) HoleView *holeView;
-@property (nonatomic) BorderFocusView *focusViewRect;
+/**
+ Group view to create my view of need
+ FocusViewWithLayer : draw an layer to the corner of focus view by hand
+ FocusViewWithImage: draw an image to the center of the view
+*/
+@property (nonatomic) FocusViewBase *focusViewRect;
 @end
 
 @implementation CameraController
@@ -28,9 +32,8 @@
   [super viewDidLoad];
   self.cameraManager = [CameraControllerManager new];
   self.buttonCamera = [ButtonCameraController new];
-  self.holeView = [HoleView new];
-  [self.focusView addSubview:self.holeView];
-  self.focusViewRect = [BorderFocusView new];
+  self.focusViewRect = [FocusViewWithImage new];
+//  [self.focusViewRect buildView];
   [self.focusView addSubview:self.focusViewRect];
   self.buttonCamera.delegate = self;
   [self.viewButtonHolder addSubview:self.buttonCamera.view];
@@ -95,8 +98,9 @@
   [self.cameraManager ajustingLayout:self.cameraDisplayView];
   self.buttonCamera.view.frame = CGRectMake(0, 0, self.viewButtonHolder.frame.size.width, self.viewButtonHolder.frame.size.height);
   self.swipeToChooseView.view.frame = CGRectMake(0, 0, self.swipeChoosenViewHolder.frame.size.width, self.swipeChoosenViewHolder.frame.size.height);//self.swipeChoosenViewHolder
-  self.holeView.frame = CGRectMake(0, 0, self.focusView.frame.size.width, self.focusView.frame.size.height);
-  self.focusViewRect.frame = CGRectMake(0, 0, self.focusView.frame.size.width, self.focusView.frame.size.height);
+//  self.holeView.frame = CGRectMake(0, 0, self.focusView.frame.size.width, self.focusView.frame.size.height);
+//  self.focusViewRect.frame = CGRectMake(0, 0, self.focusView.frame.size.width, self.focusView.frame.size.height);
+  [self.focusViewRect adjustSize:CGRectMake(0, 0, self.focusView.frame.size.width, self.focusView.frame.size.height)];
 }
 #pragma mark - need UI testing here
 - (IBAction)requestChangeCamera:(id)sender {
