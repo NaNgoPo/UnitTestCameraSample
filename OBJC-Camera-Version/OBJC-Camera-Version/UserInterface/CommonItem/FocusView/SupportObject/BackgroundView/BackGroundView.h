@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BackGroundView : UIView
 - (void)adjustImageView;
+- (void)setImage:(NSString *)nameImage;
 @end
 
 NS_ASSUME_NONNULL_END

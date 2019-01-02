@@ -47,6 +47,7 @@
 		97F3280921DC998E0064C148 /* FocusViewWithLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F3280821DC998E0064C148 /* FocusViewWithLayer.m */; };
 		97F3280D21DC99A50064C148 /* FocusViewWithImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F3280C21DC99A50064C148 /* FocusViewWithImage.m */; };
 		97F3281021DC9D660064C148 /* BackGroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F3280F21DC9D660064C148 /* BackGroundView.m */; };
+		97F3281421DCA5C50064C148 /* FocusViewBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 97F3281321DCA5C50064C148 /* FocusViewBuilder.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +140,8 @@
 		97F3280C21DC99A50064C148 /* FocusViewWithImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FocusViewWithImage.m; sourceTree = "<group>"; };
 		97F3280E21DC9D660064C148 /* BackGroundView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BackGroundView.h; sourceTree = "<group>"; };
 		97F3280F21DC9D660064C148 /* BackGroundView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BackGroundView.m; sourceTree = "<group>"; };
+		97F3281221DCA5C50064C148 /* FocusViewBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FocusViewBuilder.h; sourceTree = "<group>"; };
+		97F3281321DCA5C50064C148 /* FocusViewBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FocusViewBuilder.m; sourceTree = "<group>"; };
 		BC04E0A648BED3D12BEB1967 /* Pods-OBJC-Camera-VersionUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OBJC-Camera-VersionUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OBJC-Camera-VersionUITests/Pods-OBJC-Camera-VersionUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F0E680E7F28D8462030E1F71 /* Pods-OBJC-Camera-Version.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OBJC-Camera-Version.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OBJC-Camera-Version/Pods-OBJC-Camera-Version.debug.xcconfig"; sourceTree = "<group>"; };
 		FDDC9A3017A2AA57BD074098 /* libPods-OBJC-Camera-Version.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OBJC-Camera-Version.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -403,10 +406,10 @@
 		97F327D421D367D30064C148 /* FocusView */ = {
 			isa = PBXGroup;
 			children = (
+				97F3281121DCA4B20064C148 /* SupportObject */,
 				97F3280021DC993A0064C148 /* ViewWithLayer */,
-				97F327F521DC96D80064C148 /* BackgroundView */,
-				97F327D621D367E40064C148 /* BorderFocusView */,
-				97F327D521D367DB0064C148 /* HoleView */,
+				97F3281221DCA5C50064C148 /* FocusViewBuilder.h */,
+				97F3281321DCA5C50064C148 /* FocusViewBuilder.m */,
 			);
 			path = FocusView;
 			sourceTree = "<group>";
@@ -521,6 +524,16 @@
 				97F3280C21DC99A50064C148 /* FocusViewWithImage.m */,
 			);
 			path = FocusViewWithImage;
+			sourceTree = "<group>";
+		};
+		97F3281121DCA4B20064C148 /* SupportObject */ = {
+			isa = PBXGroup;
+			children = (
+				97F327F521DC96D80064C148 /* BackgroundView */,
+				97F327D621D367E40064C148 /* BorderFocusView */,
+				97F327D521D367DB0064C148 /* HoleView */,
+			);
+			path = SupportObject;
 			sourceTree = "<group>";
 		};
 		CCD0A94093260D551D24E0FB /* Frameworks */ = {
@@ -752,6 +765,7 @@
 				97F327ED21D5E0990064C148 /* GAlleryChoosen.m in Sources */,
 				97F327DC21D3718B0064C148 /* BorderFocusView.m in Sources */,
 				97F3280D21DC99A50064C148 /* FocusViewWithImage.m in Sources */,
+				97F3281421DCA5C50064C148 /* FocusViewBuilder.m in Sources */,
 				97F327A121D0BB660064C148 /* ButtonCameraController.m in Sources */,
 				97F327D221D33D870064C148 /* CarouselView.m in Sources */,
 				9749AAFA21D081DB000CD9B1 /* CameraController.m in Sources */,

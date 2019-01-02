@@ -20,9 +20,7 @@
 //@property (nonatomic) CameraControllerManager *cameraManager;
 @property (nonatomic) ButtonCameraController *buttonCamera;
 /**
- Group view to create my view of need
- FocusViewWithLayer : draw an layer to the corner of focus view by hand
- FocusViewWithImage: draw an image to the center of the view
+ Group view to create my view of need, can use the FocusViewBuilder for more convinience initialize
 */
 @property (nonatomic) FocusViewBase *focusViewRect;
 @end
@@ -32,8 +30,7 @@
   [super viewDidLoad];
   self.cameraManager = [CameraControllerManager new];
   self.buttonCamera = [ButtonCameraController new];
-  self.focusViewRect = [FocusViewWithImage new];
-//  [self.focusViewRect buildView];
+  self.focusViewRect = [FocusViewBuilder buildFocusViewWithMode:kFocusViewImage withAdditionalInfo:@"FocusImageTest"];
   [self.focusView addSubview:self.focusViewRect];
   self.buttonCamera.delegate = self;
   [self.viewButtonHolder addSubview:self.buttonCamera.view];

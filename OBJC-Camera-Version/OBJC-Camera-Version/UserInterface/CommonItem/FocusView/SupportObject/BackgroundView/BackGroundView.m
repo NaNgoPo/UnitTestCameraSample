@@ -22,7 +22,7 @@ const int PADDING_IMAGE = 20;
     [self setOpaque:false];
     self.imageViewCenter = [[UIImageView alloc] init];
     [self addSubview:self.imageViewCenter];
-    self.imageNamedInAsset = @"FocusImageTest";
+    self.imageNamedInAsset = @"default";
   }
   return self;
 }
@@ -30,5 +30,8 @@ const int PADDING_IMAGE = 20;
   self.imageViewCenter.frame = CGRectMake(PADDING_IMAGE, PADDING_IMAGE, self.frame.size.width - (2 * PADDING_IMAGE), self.frame.size.height - (2 * PADDING_IMAGE));
   self.imageViewCenter.image = [UIImage imageNamed:self.imageNamedInAsset];
 }
-
+- (void)setImage:(NSString *)nameImage{
+  self.imageNamedInAsset = nameImage;
+  [self adjustImageView];
+}
 @end

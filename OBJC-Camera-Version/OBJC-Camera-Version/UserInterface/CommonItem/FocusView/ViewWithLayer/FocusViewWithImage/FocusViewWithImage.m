@@ -9,6 +9,7 @@
 #import "FocusViewWithImage.h"
 @interface FocusViewWithImage()
 @property(strong,nonatomic) BackGroundView *backgroundImageView;
+@property(strong,nonatomic) NSString *imageDisplay;
 @end
 
 @implementation FocusViewWithImage
@@ -22,8 +23,9 @@
 - (void)adjustSize:(CGRect)newSize{
   [super adjustSize:newSize];
   self.backgroundImageView.frame = newSize;
-
   [self.backgroundImageView adjustImageView];
 }
-
+- (void)setImageWithName:(NSString *)name{
+  [self.backgroundImageView setImage:name];
+}
 @end

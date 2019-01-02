@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FocusViewWithImage : FocusViewBase
-
+- (void)setImageWithName:(NSString *)name;
 @end
 
 NS_ASSUME_NONNULL_END
