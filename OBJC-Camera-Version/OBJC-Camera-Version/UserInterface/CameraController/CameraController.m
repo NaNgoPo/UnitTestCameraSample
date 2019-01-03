@@ -85,7 +85,6 @@
       [self.view makeToast:diplayString];
     });
   }];
-  
 }
 - (void)viewDidAppear:(BOOL)animated{
   [super viewDidAppear:animated];
@@ -95,8 +94,6 @@
   [self.cameraManager ajustingLayout:self.cameraDisplayView];
   self.buttonCamera.view.frame = CGRectMake(0, 0, self.viewButtonHolder.frame.size.width, self.viewButtonHolder.frame.size.height);
   self.swipeToChooseView.view.frame = CGRectMake(0, 0, self.swipeChoosenViewHolder.frame.size.width, self.swipeChoosenViewHolder.frame.size.height);//self.swipeChoosenViewHolder
-//  self.holeView.frame = CGRectMake(0, 0, self.focusView.frame.size.width, self.focusView.frame.size.height);
-//  self.focusViewRect.frame = CGRectMake(0, 0, self.focusView.frame.size.width, self.focusView.frame.size.height);
   [self.focusViewRect adjustSize:CGRectMake(0, 0, self.focusView.frame.size.width, self.focusView.frame.size.height)];
 }
 #pragma mark - need UI testing here

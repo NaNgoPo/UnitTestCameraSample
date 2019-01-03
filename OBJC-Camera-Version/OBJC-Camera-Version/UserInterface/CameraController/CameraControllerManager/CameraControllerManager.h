@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readwrite) RACSubject *eventCameraController;
 @property (nonatomic, strong, readwrite) RACSubject *eventLogger;
 //Create View and add to tje viewDisplay
+- (instancetype)initWithCaptureSession:(AVCaptureSession *)captureSession;
 - (void)setupLivePreview:(UIView *)viewDisplay;
 - (void)ajustingLayout:(UIView *)viewDisplay;
 - (void)switchCameraFrontBack;

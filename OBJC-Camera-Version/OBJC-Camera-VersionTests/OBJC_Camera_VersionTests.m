@@ -43,11 +43,17 @@
   CameraControllerManager *controllerObj = [CameraControllerManager new];
   CameraControllerManager *controllerMock = OCMPartialMock(controllerObj);
   
-  AVCaptureSession *captureSession = [AVCaptureSession new];
-  AVCaptureSession *captureSessionMock = OCMPartialMock(captureSession);
-  OCMStub([controllerMock isValidSession]).andReturn(false);
   viewController.cameraManager = controllerMock;// inject the value
   [viewController.cameraManager switchCameraFrontBack];// try to call switch camera
+}
+-(void)testInitializeSpecificCamera{
+  AVCaptureSession *captureSession = [AVCaptureSession new];
+  AVCaptureSession *captureSessionMock = OCMPartialMock(captureSession);
+  
+  CameraControllerManager *controllerObj = [[CameraControllerManager alloc] initWithCaptureSession:captureSessionMock];
+  
+  
+  
 }
 - (void)testPerformanceExample {
   // This is an example of a performance test case.
